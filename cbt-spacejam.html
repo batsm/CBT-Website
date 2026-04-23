@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>~~*~~ CBT COUNTDOWN 2K25 ~~*~~</title>
+<link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Lilita+One&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+
+/* ==============================
+   PURE EARLY-2000s CHAOS ENGINE
+   ============================== */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background-color: #000080;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,255,0.07) 2px, rgba(0,0,255,0.07) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,255,0.07) 2px, rgba(0,0,255,0.07) 4px);
+  font-family: 'Boogaloo', cursive;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* === MARQUEE BAR === */
+.marquee-bar {
+  background: linear-gradient(90deg, #ff0000, #ff7700, #ffff00, #00ff00, #0000ff, #8b00ff, #ff0000);
+  background-size: 400% 100%;
+  animation: rainbowShift 3s linear infinite;
+  padding: 6px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  letter-spacing: 2px;
+  border-top: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+}
+
+.marquee-inner {
+  display: inline-block;
+  animation: marqueeScroll 18s linear infinite;
+  white-space: nowrap;
+}
+
+@keyframes rainbowShift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* === PAGE WRAPPER === */
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 40px;
+}
+
+/* === TOP HEADER === */
+.top-header {
+  text-align: center;
+  padding: 20px 10px 10px;
+  position: relative;
+}
+
+.site-title {
+  font-family: 'Lilita One', cursive;
+  font-size: clamp(2.8rem, 10vw, 6.5rem);
+  color: #ffff00;
+  text-shadow:
+    4px 4px 0 #ff0000,
+    8px 8px 0 #ff7700,
+    -2px -2px 0 #fff;
+  line-height: 1;
+  animation: titleWobble 1.5s ease-in-out infinite;
+  display: block;
+}
+
+@keyframes titleWobble {
+  0%, 100% { transform: skewX(-2deg) scale(1); }
+  50% { transform: skewX(2deg) scale(1.02); }
+}
+
+.site-subtitle {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(0.9rem, 2.5vw, 1.4rem);
+  color: #00ffff;
+  text-shadow: 2px 2px 0 #0000aa;
+  margin-top: 6px;
+  animation: blink 1.2s step-start infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.stars-row {
+  color: #ffff00;
+  font-size: 1.4rem;
+  margin: 8px 0;
+  letter-spacing: 4px;
+}
+
+/* === DIVIDER === */
+.divider {
+  height: 8px;
+  background: repeating-linear-gradient(
+    90deg,
+    #ff0000 0px, #ff0000 20px,
+    #ffff00 20px, #ffff00 40px,
+    #00ff00 40px, #00ff00 60px,
+    #00ffff 60px, #00ffff 80px,
+    #0000ff 80px, #0000ff 100px,
+    #ff00ff 100px, #ff00ff 120px
+  );
+  margin: 8px 0;
+  border: 2px solid #fff;
+}
+
+/* === UNDER CONSTRUCTION === */
+.under-construction {
+  text-align: center;
+  background: #000;
+  border: 4px solid #ffff00;
+  border-style: dashed;
+  padding: 8px;
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #ff9900;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+/* === COUNTDOWN BOX === */
+.countdown-wrapper {
+  background: linear-gradient(135deg, #1a0033, #000055, #1a0033);
+  border: 6px solid #ff00ff;
+  border-style: ridge;
+  padding: 20px;
+  margin: 12px 0;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 0 30px #ff00ff, inset 0 0 30px rgba(255,0,255,0.1);
+}
+
+.countdown-wrapper::before, .countdown-wrapper::after {
+  content: '★ ★ ★';
+  color: #ffff00;
+  font-size: 1.2rem;
+  display: block;
+  letter-spacing: 8px;
+}
+
+.countdown-title {
+  font-family: 'Lilita One', cursive;
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  color: #ffff00;
+  text-shadow: 3px 3px 0 #ff0000, 0 0 20px #ffff00;
+  margin: 8px 0 16px;
+  animation: glowPulse 1s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { text-shadow: 3px 3px 0 #ff0000, 0 0 20px #ffff00; }
+  50% { text-shadow: 3px 3px 0 #ff0000, 0 0 40px #ffff00, 0 0 60px #ff9900; }
+}
+
+.countdown-grid {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.time-block {
+  background: linear-gradient(180deg, #ff0099, #6600cc);
+  border: 4px outset #ff66ff;
+  padding: 12px 16px;
+  min-width: 90px;
+  position: relative;
+}
+
+.time-block::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border: 1px solid rgba(255,255,255,0.3);
+  pointer-events: none;
+}
+
+.time-num {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: bold;
+  color: #ffff00;
+  text-shadow: 0 0 10px #ffff00, 0 0 20px #ff9900;
+  line-height: 1;
+  display: block;
+  animation: numGlow 2s ease-in-out infinite;
+}
+
+@keyframes numGlow {
+  0%, 100% { text-shadow: 0 0 10px #ffff00; }
+  50% { text-shadow: 0 0 20px #ffff00, 0 0 40px #ff9900; }
+}
+
+.time-lbl {
+  color: #00ffff;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 4px;
+  font-family: 'Courier New', monospace;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.test-date-display {
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  margin-top: 14px;
+  text-shadow: 0 0 8px #00ff00;
+  letter-spacing: 2px;
+}
+
+/* === TWO COLUMN LAYOUT === */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+@media (max-width: 550px) {
+  .two-col { grid-template-columns: 1fr; }
+}
+
+/* === BIKE GALLERY === */
+.bike-gallery {
+  background: #000033;
+  border: 5px inset #00ffff;
+  padding: 12px;
+}
+
+.gallery-title {
+  font-family: 'Lilita One', cursive;
+  color: #ff9900;
+  font-size: 1.3rem;
+  text-align: center;
+  text-shadow: 2px 2px 0 #000;
+  margin-bottom: 10px;
+  border-bottom: 2px dashed #ff9900;
+  padding-bottom: 6px;
+}
+
+.bike-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.bike-img-wrap {
+  border: 3px outset #ff00ff;
+  overflow: hidden;
+  position: relative;
+  background: #111;
+  aspect-ratio: 4/3;
+}
+
+.bike-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+  display: block;
+}
+
+.bike-img-wrap:hover img {
+  transform: scale(1.1);
+}
+
+.bike-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.8);
+  color: #00ffff;
+  font-size: 0.65rem;
+  text-align: center;
+  padding: 2px 4px;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+}
+
+/* === GUESTBOOK / FUN STUFF BOX === */
+.fun-box {
+  background: linear-gradient(135deg, #003300, #001100);
+  border: 5px outset #00ff00;
+  padding: 14px;
+}
+
+.fun-title {
+  font-family: 'Lilita One', cursive;
+  color: #00ff00;
+  font-size: 1.3rem;
+  text-align: center;
+  text-shadow: 2px 2px 0 #000, 0 0 10px #00ff00;
+  margin-bottom: 10px;
+}
+
+.meme-text {
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-family: 'Courier New', monospace;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border: 1px dashed #00ff00;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.btn-2k {
+  display: block;
+  width: 100%;
+  background: linear-gradient(180deg, #ff6600, #cc3300);
+  border: 3px outset #ff9900;
+  color: #fff;
+  font-family: 'Lilita One', cursive;
+  font-size: 1.1rem;
+  padding: 8px;
+  cursor: pointer;
+  text-shadow: 1px 1px 0 #000;
+  letter-spacing: 1px;
+  transition: all 0.1s;
+  text-transform: uppercase;
+}
+
+.btn-2k:active {
+  border-style: inset;
+  transform: translateY(2px);
+}
+
+.btn-2k:hover {
+  background: linear-gradient(180deg, #ff8800, #ff3300);
+}
+
+/* === PANIC METER === */
+.panic-section {
+  background: #1a0000;
+  border: 5px ridge #ff0000;
+  padding: 14px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.panic-title {
+  font-family: 'Lilita One', cursive;
+  color: #ff0000;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 0 #000, 0 0 15px #ff0000;
+  margin-bottom: 10px;
+  animation: redBlink 0.8s step-start infinite;
+}
+
+@keyframes redBlink {
+  0%, 100% { color: #ff0000; }
+  50% { color: #ff9900; }
+}
+
+.panic-bar-outer {
+  height: 32px;
+  background: #000;
+  border: 3px inset #ff0000;
+  position: relative;
+  overflow: hidden;
+}
+
+.panic-bar-fill {
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    #ff0000 0px, #ff0000 10px,
+    #ff6600 10px, #ff6600 20px
+  );
+  background-size: 40px 100%;
+  animation: barberPole 0.5s linear infinite;
+  transition: width 1s ease;
+}
+
+@keyframes barberPole {
+  0% { background-position: 0 0; }
+  100% { background-position: 40px 0; }
+}
+
+.panic-pct {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  font-size: 1rem;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.panic-msg {
+  color: #ff9900;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  margin-top: 8px;
+  min-height: 40px;
+}
+
+/* === FULL WIDTH BIKE STRIP === */
+.bike-strip {
+  display: flex;
+  overflow: hidden;
+  gap: 10px;
+  padding: 10px 0;
+  border-top: 4px solid #ff00ff;
+  border-bottom: 4px solid #ff00ff;
+  margin: 10px 0;
+  background: #000;
+}
+
+.bike-strip-inner {
+  display: flex;
+  gap: 10px;
+  animation: stripScroll 20s linear infinite;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.bike-strip img {
+  height: 120px;
+  width: auto;
+  border: 3px solid #ff00ff;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+@keyframes stripScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* === SPINNING LOGO === */
+.spinning-thing {
+  text-align: center;
+  font-size: 3rem;
+  animation: spinMe 3s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spinMe {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+}
+
+/* === VISITOR COUNTER STYLE === */
+.visitor-box {
+  background: #000;
+  border: 3px inset #aaa;
+  display: inline-block;
+  padding: 4px 12px;
+  font-family: 'Courier New', monospace;
+  color: #00ff00;
+  font-size: 1.2rem;
+  letter-spacing: 4px;
+  text-shadow: 0 0 8px #00ff00;
+  margin: 6px;
+}
+
+/* === BOTTOM BAR === */
+.bottom-bar {
+  text-align: center;
+  padding: 10px;
+  background: #000;
+  border-top: 4px solid #ff00ff;
+  color: #aaa;
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+}
+
+.bottom-bar a { color: #00ffff; }
+
+/* === BOUNCING BIKES === */
+.bouncing-bikes {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 80px;
+  overflow: hidden;
+  margin: 8px 0;
+}
+
+.bounce-bike {
+  font-size: 2.2rem;
+  animation: bikeBounce var(--dur) ease-in-out var(--delay) infinite;
+}
+
+@keyframes bikeBounce {
+  0%, 100% { transform: translateY(0) scaleX(-1); }
+  50% { transform: translateY(-30px) scaleX(-1); }
+}
+
+/* === SCROLLING TEXT === */
+.scroll-ticker {
+  background: #000;
+  border: 2px solid #ffff00;
+  padding: 5px;
+  overflow: hidden;
+  font-family: 'Courier New', monospace;
+  color: #ffff00;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  margin: 6px 0;
+}
+
+/* === FIRE GIF REPLACEMENT === */
+.fire-anim {
+  font-size: 2rem;
+  animation: fireFlicker 0.3s step-start infinite;
+  display: inline-block;
+}
+
+@keyframes fireFlicker {
+  0% { content: '🔥'; transform: scale(1); }
+  33% { transform: scale(1.1) rotate(-5deg); }
+  66% { transform: scale(0.9) rotate(5deg); }
+  100% { transform: scale(1); }
+}
+
+/* === WOW BADGE === */
+.wow-badge {
+  background: radial-gradient(circle, #ffff00, #ff6600);
+  border: 4px solid #ff0000;
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Lilita One', cursive;
+  font-size: 0.75rem;
+  color: #000;
+  text-align: center;
+  line-height: 1.1;
+  animation: badgeSpin 4s ease-in-out infinite, badgePulse 1s ease-in-out infinite;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: default;
+  text-transform: uppercase;
+  padding: 8px;
+}
+
+@keyframes badgeSpin {
+  0%, 100% { transform: rotate(-10deg) scale(1); }
+  50% { transform: rotate(10deg) scale(1.05); }
+}
+
+@keyframes badgePulse {
+  0%, 100% { box-shadow: 0 0 10px #ff0000; }
+  50% { box-shadow: 0 0 25px #ff0000, 0 0 40px #ff6600; }
+}
+
+/* Large bike showcase */
+.large-bike-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.large-bike-wrap {
+  border: 4px outset #00ffff;
+  overflow: hidden;
+  position: relative;
+  background: #000;
+  aspect-ratio: 16/9;
+}
+
+.large-bike-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: filter 0.3s, transform 0.3s;
+}
+
+.large-bike-wrap:hover img {
+  filter: brightness(1.2) saturate(1.5);
+  transform: scale(1.08);
+}
+
+.large-bike-wrap .bike-label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(0deg, #000, transparent);
+  color: #ffff00;
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.85rem;
+  padding: 6px 6px 4px;
+  text-shadow: 1px 1px 0 #000;
+}
+
+@media (max-width: 500px) {
+  .large-bike-row { grid-template-columns: 1fr 1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- TOP MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-inner">
+    🏍️ CBT COUNTDOWN IS LIVE 🏍️ &nbsp;&nbsp;&nbsp; 🔥 18TH MAY 2026 - THE BIG DAY 🔥 &nbsp;&nbsp;&nbsp; ⚡ YOU WILL PASS ⚡ &nbsp;&nbsp;&nbsp; 🏍️ CBT COUNTDOWN IS LIVE 🏍️ &nbsp;&nbsp;&nbsp; 🔥 18TH MAY 2026 - THE BIG DAY 🔥 &nbsp;&nbsp;&nbsp; ⚡ YOU WILL PASS ⚡ &nbsp;&nbsp;&nbsp; 🏍️ CBT COUNTDOWN IS LIVE 🏍️ &nbsp;&nbsp;&nbsp; 🔥 18TH MAY 2026 - THE BIG DAY 🔥 &nbsp;&nbsp;&nbsp; ⚡ YOU WILL PASS ⚡ &nbsp;&nbsp;&nbsp;
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="top-header">
+    <div class="wow-badge">🏍️<br>SO<br>EPIC!!</div>
+    <div class="stars-row">✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦</div>
+    <span class="site-title">CBT COUNTDOWN!!</span>
+    <div class="site-subtitle">~~*~~ THE ULTIMATE MOTORBIKE TEST HYPE PAGE ~~*~~</div>
+    <div class="stars-row">✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="under-construction">
+    ⚠️ [[ BEST VIEWED IN INTERNET EXPLORER 6 ]] ⚠️ &nbsp;&nbsp;&nbsp; 🏍️ LOADING... PLEASE WAIT... 🏍️
+  </div>
+
+  <!-- BOUNCING BIKES -->
+  <div class="bouncing-bikes">
+    <span class="bounce-bike" style="--dur:0.7s;--delay:0s">🏍️</span>
+    <span class="bounce-bike" style="--dur:0.9s;--delay:0.1s">🏍️</span>
+    <span class="bounce-bike" style="--dur:0.6s;--delay:0.2s">🏍️</span>
+    <span class="bounce-bike" style="--dur:0.8s;--delay:0.3s">🏍️</span>
+    <span class="bounce-bike" style="--dur:0.75s;--delay:0.15s">🏍️</span>
+    <span class="bounce-bike" style="--dur:0.65s;--delay:0.05s">🏍️</span>
+    <span class="bounce-bike" style="--dur:0.85s;--delay:0.25s">🏍️</span>
+  </div>
+
+  <!-- MAIN COUNTDOWN -->
+  <div class="countdown-wrapper">
+    <div class="countdown-title">🔥 TIME UNTIL CBT DAY 🔥</div>
+    <div class="countdown-grid">
+      <div class="time-block">
+        <span class="time-num" id="days">00</span>
+        <div class="time-lbl">DAYS</div>
+      </div>
+      <div class="time-block">
+        <span class="time-num" id="hours">00</span>
+        <div class="time-lbl">HRS</div>
+      </div>
+      <div class="time-block">
+        <span class="time-num" id="minutes">00</span>
+        <div class="time-lbl">MINS</div>
+      </div>
+      <div class="time-block">
+        <span class="time-num" id="seconds">00</span>
+        <div class="time-lbl">SECS</div>
+      </div>
+    </div>
+    <div class="test-date-display">📅 TEST DATE: 18 MAY 2026 @ 08:00 AM 📅</div>
+    <div style="margin-top:12px">
+      <span class="spinning-thing">🏍️</span>
+      <span class="spinning-thing" style="animation-delay:0.3s">🪖</span>
+      <span class="spinning-thing" style="animation-delay:0.6s">🏍️</span>
+    </div>
+  </div>
+
+  <!-- SCROLL TICKER -->
+  <div class="scroll-ticker">
+    <div class="marquee-inner" style="animation-duration:25s">
+      💥 DON'T FORGET: CLUTCH IN BEFORE BRAKING &nbsp;|&nbsp; 🪖 HELMET ON AT ALL TIMES &nbsp;|&nbsp; 👀 HEAD CHECKS = PASSING &nbsp;|&nbsp; 🛑 SMOOTH ON THE BRAKES &nbsp;|&nbsp; ⚙️ FRICTION POINT IS YOUR BEST FRIEND &nbsp;|&nbsp; 💡 CANCEL YOUR INDICATOR &nbsp;|&nbsp; 🔄 FIGURE OF 8 PRACTICE DAILY &nbsp;|&nbsp; 💥 DON'T FORGET: CLUTCH IN BEFORE BRAKING &nbsp;|&nbsp; 🪖 HELMET ON AT ALL TIMES &nbsp;|&nbsp; 👀 HEAD CHECKS = PASSING &nbsp;|&nbsp; 🛑 SMOOTH ON THE BRAKES &nbsp;|&nbsp; ⚙️ FRICTION POINT IS YOUR BEST FRIEND &nbsp;|&nbsp; 💡 CANCEL YOUR INDICATOR &nbsp;|&nbsp; 🔄 FIGURE OF 8 PRACTICE DAILY &nbsp;|&nbsp;
+    </div>
+  </div>
+
+  <!-- LARGE BIKE SHOWCASE -->
+  <div style="background:#000033;border:5px ridge #ff00ff;padding:12px;margin:10px 0">
+    <div style="font-family:'Lilita One',cursive;color:#ff00ff;font-size:1.4rem;text-align:center;text-shadow:2px 2px 0 #000,0 0 15px #ff00ff;margin-bottom:10px">
+      🏍️ THE BIKES YOU'LL WISH YOU OWNED 🏍️
+    </div>
+    <div class="large-bike-row">
+      <div class="large-bike-wrap">
+        <img src="https://www.motorcycles-for-beginners.com/images/honda-cbf-125.jpg"
+             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Honda_CBF125_%28CBF_125%29_2012_Motorcycle.jpg/640px-Honda_CBF125_%28CBF_125%29_2012_Motorcycle.jpg'"
+             alt="Honda CBF125">
+        <div class="bike-label">Honda CBF125 🔴</div>
+      </div>
+      <div class="large-bike-wrap">
+        <img src="https://motoimg.com/images/yamaha-yzf-r125-2023-01.jpg"
+             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/2019_Yamaha_YZF-R125.jpg/640px-2019_Yamaha_YZF-R125.jpg'"
+             alt="Yamaha R125">
+        <div class="bike-label">Yamaha YZF-R125 🔵</div>
+      </div>
+      <div class="large-bike-wrap">
+        <img src="https://www.ktm.com/content/dam/ktm-website/motorcycles/2023/street/125-duke/ktm-125-duke-MY23.jpg"
+             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/KTM_125_Duke_%282021%29.jpg/640px-KTM_125_Duke_%282021%29.jpg'"
+             alt="KTM 125 Duke">
+        <div class="bike-label">KTM 125 Duke 🟠</div>
+      </div>
+    </div>
+    <div class="large-bike-row" style="margin-top:8px">
+      <div class="large-bike-wrap">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Kawasaki_Z125_Pro.jpg/640px-Kawasaki_Z125_Pro.jpg"
+             onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/9/9f/Kawasaki_motorcycles.jpg'"
+             alt="Kawasaki Z125">
+        <div class="bike-label">Kawasaki Z125 🟢</div>
+      </div>
+      <div class="large-bike-wrap">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Aprilia_RS125.jpg/640px-Aprilia_RS125.jpg"
+             onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Aprilia_RS_125_-_2007_-_01.jpg/640px-Aprilia_RS_125_-_2007_-_01.jpg'"
+             alt="Aprilia RS125">
+        <div class="bike-label">Aprilia RS125 🔴</div>
+      </div>
+      <div class="large-bike-wrap">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Honda_CB125R_-_01.jpg/640px-Honda_CB125R_-_01.jpg"
+             onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Honda_CB125F_2021.jpg/640px-Honda_CB125F_2021.jpg'"
+             alt="Honda CB125R">
+        <div class="bike-label">Honda CB125R ⚫</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TWO COL: GALLERY + MEMES -->
+  <div class="two-col">
+
+    <!-- MINI GALLERY -->
+    <div class="bike-gallery">
+      <div class="gallery-title">📸 BIKE GALLERY v2.0</div>
+      <div class="bike-grid">
+        <div class="bike-img-wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Honda_CBF125_%28CBF_125%29_2012_Motorcycle.jpg/400px-Honda_CBF125_%28CBF_125%29_2012_Motorcycle.jpg"
+               onerror="this.style.display='none'"
+               alt="CBF125">
+          <div class="bike-caption">CBF125</div>
+        </div>
+        <div class="bike-img-wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/2019_Yamaha_YZF-R125.jpg/400px-2019_Yamaha_YZF-R125.jpg"
+               onerror="this.style.display='none'"
+               alt="R125">
+          <div class="bike-caption">YZF-R125</div>
+        </div>
+        <div class="bike-img-wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/KTM_125_Duke_%282021%29.jpg/400px-KTM_125_Duke_%282021%29.jpg"
+               onerror="this.style.display='none'"
+               alt="KTM">
+          <div class="bike-caption">125 Duke</div>
+        </div>
+        <div class="bike-img-wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Aprilia_RS_125_-_2007_-_01.jpg/400px-Aprilia_RS_125_-_2007_-_01.jpg"
+               onerror="this.style.display='none'"
+               alt="RS125">
+          <div class="bike-caption">RS125</div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:8px">
+        <span style="color:#00ffff;font-family:'Courier New',monospace;font-size:0.75rem">
+          CLICK PICS 2 ZOOM!!! (jk)
+        </span>
+      </div>
+    </div>
+
+    <!-- MEME BOX + PANIC -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div class="fun-box">
+        <div class="fun-title">💬 HYPE GENERATOR 3000</div>
+        <div class="meme-text" id="memeText">Loading sick banter...</div>
+        <button class="btn-2k" onclick="newMeme()">⚡ NEXT HYPE ⚡</button>
+      </div>
+
+      <div style="background:#000;border:3px solid #ffff00;padding:10px;text-align:center">
+        <div style="color:#ffff00;font-family:'Courier New',monospace;font-size:0.8rem;margin-bottom:4px">VISITORS:</div>
+        <div class="visitor-box" id="visitorCount">000001</div>
+        <div style="color:#aaa;font-family:'Courier New',monospace;font-size:0.7rem;margin-top:4px">since 2025</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SCROLLING BIKE STRIP -->
+  <div class="bike-strip">
+    <div class="bike-strip-inner" id="stripInner">
+      <!-- Filled by JS -->
+    </div>
+    <div class="bike-strip-inner" id="stripInner2">
+    </div>
+  </div>
+
+  <!-- PANIC METER -->
+  <div class="panic-section">
+    <div class="panic-title">⚠️ PANIC-O-METER ⚠️</div>
+    <div class="panic-bar-outer">
+      <div class="panic-bar-fill" id="panicFill" style="width:0%"></div>
+      <div class="panic-pct" id="panicPct">0%</div>
+    </div>
+    <div class="panic-msg" id="panicMsg">Calculating your stress levels...</div>
+  </div>
+
+  <!-- FUN FACTS -->
+  <div style="background:#1a1a00;border:4px solid #ffff00;border-style:double;padding:14px;margin:10px 0">
+    <div style="font-family:'Lilita One',cursive;color:#ffff00;font-size:1.3rem;text-align:center;margin-bottom:10px;text-shadow:2px 2px 0 #000">
+      ⚡ DID U KNOW?? ⚡
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px" id="funFacts">
+    </div>
+  </div>
+
+  <!-- BOTTOM STATS BAR -->
+  <div class="divider"></div>
+
+  <div style="background:#000;padding:10px;text-align:center;border:3px inset #aaa">
+    <span class="fire-anim">🔥</span>
+    <span style="color:#ff9900;font-family:'Lilita One',cursive;font-size:1.1rem;margin:0 10px">
+      GOOD LUCK LEGENDS!!!
+    </span>
+    <span class="fire-anim">🔥</span>
+    <div style="color:#aaa;font-family:'Courier New',monospace;font-size:0.75rem;margin-top:6px">
+      Best viewed at 800x600 resolution • Netscape Navigator 4.0+ required<br>
+      This page is <span style="color:#00ff00">CBT CERTIFIED ✓</span> • No motorbikes were harmed in the making of this site
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ===== TARGET DATE =====
+const TARGET = new Date('2026-05-18T08:00:00');
+
+// ===== COUNTDOWN =====
+function pad(n) { return String(n).padStart(2, '0'); }
+
+function tick() {
+  const diff = TARGET - new Date();
+  if (diff <= 0) {
+    ['days','hours','minutes','seconds'].forEach(id => document.getElementById(id).textContent = '00');
+    document.querySelector('.countdown-title').textContent = '🎉 THE DAY IS HERE!!!! 🎉';
+    updatePanic(0);
+    return;
+  }
+  const totalDays = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('days').textContent = pad(totalDays);
+  document.getElementById('hours').textContent = pad(h);
+  document.getElementById('minutes').textContent = pad(m);
+  document.getElementById('seconds').textContent = pad(s);
+  updatePanic(totalDays);
+}
+
+setInterval(tick, 1000);
+tick();
+
+// ===== PANIC METER =====
+function updatePanic(days) {
+  const pct = Math.min(100, Math.max(3, Math.round((1 - days / 120) * 100)));
+  document.getElementById('panicFill').style.width = pct + '%';
+  document.getElementById('panicPct').textContent = pct + '%';
+
+  const msgs = [
+    [60, "😎 Totally calm. You haven't even looked at a motorbike yet."],
+    [30, "🙂 Getting a bit real. Maybe watch a YouTube video or 12."],
+    [14, "😅 Two weeks away!! Time to actually sit on a motorbike m8."],
+    [7,  "😬 ONE WEEK. Do you know where the friction point is??? DO YOU???"],
+    [3,  "😰 THREE DAYS. Sleep? Who needs sleep?? PRACTISE INSTEAD."],
+    [1,  "💀 TOMORROW!! Your palms are already sweating aren't they."],
+    [0,  "🫡 TODAY IS THE DAY. YOU GOT THIS. PROBABLY. GO GO GO!!!"],
+  ];
+
+  let msg = msgs[msgs.length - 1][1];
+  for (const [threshold, text] of msgs) {
+    if (days >= threshold) { msg = text; break; }
+  }
+  document.getElementById('panicMsg').textContent = msg;
+}
+
+// ===== MEMES =====
+const memes = [
+  "Your examiner has seen 500 nervous learners this year. They're not impressed. Or unimpressed. They just... are. 👁️",
+  "One of you WILL stall at the worst possible moment. It is written. ✍️",
+  "The figure of 8 is just yoga on wheels and you ARE an athlete 🧘",
+  "You've watched 47 YouTube tutorials. The bike still doesn't care. 📺",
+  "At least one of you will forget to cancel the indicator. THE INDICATOR WILL MOCK YOU. 📯",
+  "Remember: look where you want to go. Not at the ground. NOT. AT. THE. GROUND. 👀",
+  "The helmet hair will be catastrophic. The freedom will be worth it. 💇",
+  "Clutch friction point is your best friend. Treat it right. 🤝",
+  "Whoever stalls at the junction buys McDonald's. That is the sacred law. 🍟",
+  "You're going to nail it and then immediately start planning what 125 to buy 🏍️",
+  "This time next month you'll be filtering through traffic like an absolute menace 😈",
+  "The examiner doesn't want you to fail. They just also don't want you to crash. Fine line. 🫣",
+  "Your new riding jacket cost more than your first bike probably will. Priorities: respected. 🧥",
+  "CBT = Can't Believe They're letting me ride. And yet here we are!!! 🤯",
+];
+
+let memeIdx = 0;
+function newMeme() {
+  memeIdx = (memeIdx + 1) % memes.length;
+  document.getElementById('memeText').textContent = memes[memeIdx];
+}
+document.getElementById('memeText').textContent = memes[Math.floor(Math.random() * memes.length)];
+
+// ===== VISITOR COUNTER =====
+let visits = parseInt(localStorage.getItem('cbt_visits') || '0') + 1;
+localStorage.setItem('cbt_visits', visits);
+document.getElementById('visitorCount').textContent = String(visits).padStart(6, '0');
+
+// ===== FUN FACTS =====
+const facts = [
+  ["🏍️ 125cc TOP SPEED", "About 70mph. Enough. Trust."],
+  ["📋 CBT LASTS", "Up to 2 years before renewal"],
+  ["🪖 HELMETS", "Must be UN-ECE 22.06 rated"],
+  ["⛽ MPG", "125s can do 100+ mpg!!"],
+  ["📅 TEST LENGTH", "Usually a full day, 7-8 hrs"],
+  ["🔑 NO TEST NEEDED", "Just CBT for a 125cc. LFG!"],
+];
+
+const factsContainer = document.getElementById('funFacts');
+facts.forEach(([title, body]) => {
+  const div = document.createElement('div');
+  div.style.cssText = 'background:#000;border:2px solid #ffff00;padding:8px;font-family:Courier New,monospace';
+  div.innerHTML = `<div style="color:#ffff00;font-size:0.75rem;font-weight:bold">${title}</div><div style="color:#fff;font-size:0.8rem;margin-top:3px">${body}</div>`;
+  factsContainer.appendChild(div);
+});
+
+// ===== SCROLLING BIKE STRIP =====
+const bikeEmojis = ['🏍️','🏍️','🏍️','🛵','🏍️','🏍️','🛵','🏍️'];
+const strip = document.getElementById('stripInner');
+const strip2 = document.getElementById('stripInner2');
+
+bikeEmojis.forEach(e => {
+  const span = document.createElement('span');
+  span.style.cssText = 'font-size:5rem;display:inline-block;padding:0 20px;line-height:1';
+  span.textContent = e;
+  strip.appendChild(span.cloneNode(true));
+  strip2.appendChild(span);
+});
+</script>
+</body>
+</html>
