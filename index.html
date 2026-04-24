@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>~~*~~ CBT COUNTDOWN 2026 ~~*~~</title>
+<link href="https://fonts.googleapis.com/css2?family=Boogaloo&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background-color: #000080;
+  background-image:
+    repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,180,0.09) 2px,rgba(0,0,180,0.09) 4px),
+    repeating-linear-gradient(90deg,transparent,transparent 2px,rgba(0,0,180,0.09) 2px,rgba(0,0,180,0.09) 4px);
+  font-family: Impact, 'Arial Black', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* MARQUEE */
+.marquee-bar {
+  background: linear-gradient(90deg,#f00,#f70,#ff0,#0f0,#00f,#80f,#f00);
+  background-size: 200%;
+  animation: rainbow 2.5s linear infinite;
+  padding: 6px 0;
+  overflow: hidden;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #000;
+  letter-spacing: 2px;
+  border-top: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+  white-space: nowrap;
+}
+.marquee-inner {
+  display: inline-block;
+  animation: mq 20s linear infinite;
+  white-space: nowrap;
+}
+
+.page { max-width: 860px; margin: 0 auto; padding: 0 10px 40px; }
+
+/* HEADER */
+.header { text-align: center; padding: 18px 10px 6px; position: relative; }
+.site-title {
+  font-size: clamp(2.8rem,10vw,6rem);
+  color: #ff0;
+  text-shadow: 4px 4px 0 #f00, 7px 7px 0 #f70, -2px -2px 0 #fff;
+  line-height: 0.95;
+  animation: twobble 1.8s ease-in-out infinite;
+  display: block;
+}
+.site-sub {
+  font-family: 'Boogaloo', cursive;
+  font-size: clamp(0.85rem,2.5vw,1.25rem);
+  color: #0ff;
+  text-shadow: 2px 2px 0 #00a;
+  margin-top: 8px;
+  animation: blink 1.2s step-start infinite;
+}
+.stars { color: #ff0; font-size: 1.2rem; letter-spacing: 8px; margin: 6px 0; display: block; }
+
+.badge {
+  background: radial-gradient(circle,#ff0,#f60);
+  border: 4px solid #f00;
+  border-radius: 50%;
+  width: 78px; height: 78px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.62rem; color: #000; text-align: center; line-height: 1.2;
+  position: absolute; right: 10px; top: 18px;
+  box-shadow: 0 0 18px #f00;
+  animation: badge 3s ease-in-out infinite;
+  padding: 6px;
+}
+
+/* DIVIDER */
+.divider {
+  height: 8px;
+  background: repeating-linear-gradient(90deg,#f00 0,#f00 20px,#ff0 20px,#ff0 40px,#0f0 40px,#0f0 60px,#0ff 60px,#0ff 80px,#00f 80px,#00f 100px,#f0f 100px,#f0f 120px);
+  margin: 8px 0;
+  border: 2px solid #fff;
+}
+
+.ie-bar {
+  background: #000;
+  border: 4px dashed #ff0;
+  padding: 6px 12px;
+  margin: 6px 0;
+  font-family: 'Courier New', monospace;
+  color: #f90;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+/* BOUNCING BIKES */
+.bounce-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 65px;
+  overflow: hidden;
+  margin: 6px 0;
+}
+.bounce-bike {
+  font-size: 1.9rem;
+  display: inline-block;
+  animation: bbounce var(--dur) ease-in-out var(--delay) infinite;
+}
+
+/* COUNTDOWN BOX */
+.countdown-box {
+  background: linear-gradient(135deg,#1a0033,#000055,#1a0033);
+  border: 6px ridge #f0f;
+  padding: 20px;
+  margin: 12px 0;
+  text-align: center;
+  box-shadow: 0 0 28px #f0f, inset 0 0 28px rgba(255,0,255,0.08);
+}
+.countdown-title {
+  color: #ff0;
+  font-size: clamp(1.2rem,3.5vw,1.9rem);
+  margin: 6px 0 16px;
+  animation: glow 1.2s ease-in-out infinite;
+}
+.cd-grid { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.cd-block {
+  background: linear-gradient(180deg,#f09,#60c);
+  border: 4px outset #f6f;
+  padding: 12px 16px;
+  min-width: 78px;
+  text-align: center;
+}
+.cd-num {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(2rem,7vw,3.8rem);
+  font-weight: bold;
+  color: #ff0;
+  text-shadow: 0 0 10px #ff0, 0 0 20px #f90;
+  line-height: 1;
+  display: block;
+}
+.cd-num.seconds { animation: secpop 1s ease-in-out infinite; }
+.cd-lbl {
+  color: #0ff;
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 4px;
+  font-family: 'Courier New', monospace;
+}
+.cd-date {
+  color: #0f0;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  margin-top: 12px;
+  text-shadow: 0 0 8px #0f0;
+  letter-spacing: 2px;
+}
+
+/* TICKER */
+.ticker {
+  background: #000;
+  border: 2px solid #ff0;
+  padding: 5px 8px;
+  overflow: hidden;
+  font-family: 'Courier New', monospace;
+  color: #ff0;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  margin: 6px 0;
+  white-space: nowrap;
+}
+.ticker-inner { display: inline-block; animation: mq 24s linear infinite; white-space: nowrap; }
+
+/* BIKE GRIDS */
+.bike-showcase {
+  background: #000033;
+  border: 5px ridge #f0f;
+  padding: 12px;
+  margin: 10px 0;
+}
+.bike-showcase-title {
+  color: #f0f;
+  font-size: 1.35rem;
+  text-align: center;
+  text-shadow: 2px 2px 0 #000, 0 0 14px #f0f;
+  margin-bottom: 10px;
+}
+.bike-grid-big { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+.bike-grid-small { display: grid; grid-template-columns: repeat(2,1fr); gap: 6px; }
+
+.bike-card {
+  border: 3px outset var(--accent);
+  overflow: hidden;
+  position: relative;
+  background: var(--bg);
+  aspect-ratio: 16/9;
+  cursor: crosshair;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.bike-card.small { aspect-ratio: 4/3; }
+.bike-card:hover { transform: scale(1.05); box-shadow: 0 0 14px var(--accent); }
+.bike-card svg { width: 100%; height: 100%; display: block; }
+
+/* TWO COL */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media(max-width:540px) {
+  .two-col { grid-template-columns: 1fr; }
+  .bike-grid-big { grid-template-columns: repeat(2,1fr); }
+}
+
+.gallery-box {
+  background: #000033;
+  border: 5px inset #0ff;
+  padding: 12px;
+}
+.gallery-title {
+  color: #f90;
+  font-size: 1.1rem;
+  text-align: center;
+  text-shadow: 2px 2px 0 #000;
+  margin-bottom: 8px;
+  border-bottom: 2px dashed #f90;
+  padding-bottom: 6px;
+}
+.gallery-hint {
+  text-align: center;
+  margin-top: 6px;
+  color: #0ff;
+  font-family: 'Courier New', monospace;
+  font-size: 0.68rem;
+}
+
+.hype-col { display: flex; flex-direction: column; gap: 10px; }
+.hype-box {
+  background: linear-gradient(135deg,#003300,#001100);
+  border: 5px outset #0f0;
+  padding: 14px;
+  flex: 1;
+}
+.hype-title {
+  color: #0f0;
+  font-size: 1.1rem;
+  text-align: center;
+  text-shadow: 2px 2px 0 #000, 0 0 10px #0f0;
+  margin-bottom: 8px;
+}
+.hype-text {
+  color: #fff;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  font-family: 'Courier New', monospace;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border: 1px dashed #0f0;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.btn-2k {
+  display: block;
+  width: 100%;
+  background: linear-gradient(180deg,#f60,#c30);
+  border: 3px outset #f90;
+  color: #fff;
+  font-family: Impact,sans-serif;
+  font-size: 1rem;
+  padding: 8px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: filter 0.15s;
+}
+.btn-2k:hover { filter: brightness(1.3); }
+.btn-2k:active { border-style: inset; transform: translateY(1px); }
+
+.visitor-box {
+  background: #000;
+  border: 3px solid #ff0;
+  padding: 10px;
+  text-align: center;
+}
+.visitor-label { color: #ff0; font-family: 'Courier New',monospace; font-size: 0.72rem; margin-bottom: 4px; }
+.visitor-count {
+  background: #000;
+  border: 3px inset #aaa;
+  display: inline-block;
+  padding: 4px 12px;
+  font-family: 'Courier New',monospace;
+  color: #0f0;
+  font-size: 1.2rem;
+  letter-spacing: 4px;
+  text-shadow: 0 0 8px #0f0;
+}
+.visitor-since { color: #aaa; font-family: 'Courier New',monospace; font-size: 0.62rem; margin-top: 4px; }
+
+/* EMOJI STRIP */
+.emoji-strip {
+  overflow: hidden;
+  border-top: 4px solid #f0f;
+  border-bottom: 4px solid #f0f;
+  background: #000;
+  padding: 4px 0;
+  margin: 10px 0;
+  white-space: nowrap;
+}
+.emoji-strip-inner {
+  display: inline-block;
+  font-size: 3.2rem;
+  animation: mq 10s linear infinite;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* PANIC */
+.panic-box {
+  background: #1a0000;
+  border: 5px ridge #f00;
+  padding: 14px;
+  margin: 10px 0;
+  text-align: center;
+}
+.panic-title {
+  font-size: 1.4rem;
+  color: #f00;
+  text-shadow: 2px 2px 0 #000, 0 0 14px #f00;
+  margin-bottom: 10px;
+  animation: blink 0.7s step-start infinite;
+}
+.panic-bar-outer {
+  height: 32px;
+  background: #000;
+  border: 3px inset #f00;
+  position: relative;
+  overflow: hidden;
+}
+.panic-bar-fill {
+  height: 100%;
+  background: repeating-linear-gradient(90deg,#f00 0,#f00 10px,#f60 10px,#f60 20px);
+  background-size: 40px 100%;
+  animation: stripe 0.4s linear infinite;
+  transition: width 1s ease;
+}
+.panic-bar-pct {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: 'Courier New',monospace;
+  font-weight: bold;
+  font-size: 1rem;
+  text-shadow: 1px 1px 0 #000;
+}
+.panic-msg { color: #f90; font-family: 'Courier New',monospace; font-size: 0.88rem; margin-top: 8px; min-height: 40px; }
+
+/* FACTS */
+.facts-box { background: #1a1a00; border: 4px double #ff0; padding: 14px; margin: 10px 0; }
+.facts-title { color: #ff0; font-size: 1.25rem; text-align: center; margin-bottom: 10px; }
+.facts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.fact-card { background: #000; border: 2px solid #ff0; padding: 8px; }
+.fact-title { color: #ff0; font-family: 'Courier New',monospace; font-size: 0.68rem; font-weight: bold; }
+.fact-body { color: #fff; font-family: 'Courier New',monospace; font-size: 0.78rem; margin-top: 3px; }
+
+/* FOOTER */
+.footer { background: #000; padding: 10px; text-align: center; border: 3px inset #aaa; }
+.footer-text { color: #aaa; font-family: 'Courier New',monospace; font-size: 0.68rem; margin-top: 6px; }
+
+/* KEYFRAMES */
+@keyframes mq       { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+@keyframes twobble  { 0%,100%{transform:skewX(-2deg)} 50%{transform:skewX(2deg) scale(1.02)} }
+@keyframes blink    { 0%,100%{opacity:1} 50%{opacity:0} }
+@keyframes glow     { 0%,100%{text-shadow:3px 3px 0 #f00,0 0 20px #ff0} 50%{text-shadow:3px 3px 0 #f00,0 0 50px #ff0,0 0 80px #f90} }
+@keyframes badge    { 0%,100%{transform:rotate(-8deg) scale(1)} 50%{transform:rotate(8deg) scale(1.06)} }
+@keyframes bbounce  { 0%,100%{transform:translateY(0) scaleX(-1)} 50%{transform:translateY(-20px) scaleX(-1)} }
+@keyframes stripe   { 0%{background-position:0 0} 100%{background-position:40px 0} }
+@keyframes rainbow  { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
+@keyframes secpop   { 0%{transform:scaleY(1)} 40%{transform:scaleY(0.75)} 100%{transform:scaleY(1)} }
+</style>
+</head>
+<body>
+
+<!-- RAINBOW MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-inner">
+    🏍️ CBT COUNTDOWN 🏍️ &nbsp;&nbsp;&nbsp; 🔥 18TH MAY 2026 - THE BIG DAY 🔥 &nbsp;&nbsp;&nbsp; ⚡ YOU WILL PASS ⚡ &nbsp;&nbsp;&nbsp; 🪖 HELMET ON ALWAYS 🪖 &nbsp;&nbsp;&nbsp; 💥 CANCEL YOUR INDICATORS 💥 &nbsp;&nbsp;&nbsp;
+    🏍️ CBT COUNTDOWN 🏍️ &nbsp;&nbsp;&nbsp; 🔥 18TH MAY 2026 - THE BIG DAY 🔥 &nbsp;&nbsp;&nbsp; ⚡ YOU WILL PASS ⚡ &nbsp;&nbsp;&nbsp; 🪖 HELMET ON ALWAYS 🪖 &nbsp;&nbsp;&nbsp; 💥 CANCEL YOUR INDICATORS 💥 &nbsp;&nbsp;&nbsp;
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="badge">🏍️<br>SO<br>EPIC!!</div>
+    <span class="stars">✦ ✦ ✦ ✦ ✦ ✦</span>
+    <span class="site-title">CBT COUNTDOWN!!</span>
+    <div class="site-sub">~~*~~ THE ULTIMATE MOTORBIKE TEST HYPE PAGE ~~*~~</div>
+    <span class="stars">✦ ✦ ✦ ✦ ✦ ✦</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="ie-bar">⚠️ [[ BEST VIEWED IN INTERNET EXPLORER 6 AT 800x600 ]] ⚠️ &nbsp; 🏍️ LOADING... PLEASE WAIT 🏍️</div>
+
+  <!-- BOUNCING BIKES -->
+  <div class="bounce-row">
+    <span class="bounce-bike" style="--dur:0.7s;--delay:0s">🏍️</span>
+    <span class="bounce-bike" style="--dur:0.9s;--delay:0.08s">🏍️</span>
+    <span class="bounce-bike" style="--dur:0.6s;--delay:0.16s">🏍️</span>
+    <span class="bounce-bike" style="--dur:0.8s;--delay:0.24s">🏍️</span>
+    <span class="bounce-bike" style="--dur:0.75s;--delay:0.32s">🏍️</span>
+    <span class="bounce-bike" style="--dur:0.65s;--delay:0.4s">🏍️</span>
+    <span class="bounce-bike" style="--dur:0.85s;--delay:0.48s">🏍️</span>
+    <span class="bounce-bike" style="--dur:0.95s;--delay:0.56s">🏍️</span>
+  </div>
+
+  <!-- COUNTDOWN -->
+  <div class="countdown-box">
+    <div style="color:#ff0;letter-spacing:6px;margin-bottom:4px;font-size:0.9rem">★ ★ ★ ★ ★</div>
+    <div class="countdown-title">🔥 TIME UNTIL CBT DAY 🔥</div>
+    <div class="cd-grid">
+      <div class="cd-block">
+        <span class="cd-num" id="cd-days">00</span>
+        <div class="cd-lbl">DAYS</div>
+      </div>
+      <div class="cd-block">
+        <span class="cd-num" id="cd-hours">00</span>
+        <div class="cd-lbl">HRS</div>
+      </div>
+      <div class="cd-block">
+        <span class="cd-num" id="cd-minutes">00</span>
+        <div class="cd-lbl">MINS</div>
+      </div>
+      <div class="cd-block">
+        <span class="cd-num seconds" id="cd-seconds">00</span>
+        <div class="cd-lbl">SECS</div>
+      </div>
+    </div>
+    <div class="cd-date">📅 TEST DATE: 18 MAY 2026 @ 08:00 AM 📅</div>
+    <div style="margin-top:8px;font-size:1.8rem">🏍️ 🪖 🏍️</div>
+    <div style="color:#ff0;letter-spacing:6px;margin-top:4px;font-size:0.9rem">★ ★ ★ ★ ★</div>
+  </div>
+
+  <!-- TIPS TICKER -->
+  <div class="ticker">
+    <div class="ticker-inner">
+      💥 CLUTCH IN BEFORE BRAKING &nbsp;|&nbsp; 🪖 HELMET AT ALL TIMES &nbsp;|&nbsp; 👀 HEAD CHECKS = PASSING &nbsp;|&nbsp; 🛑 SMOOTH ON THE BRAKES &nbsp;|&nbsp; ⚙️ FRICTION POINT = BEST FRIEND &nbsp;|&nbsp; 💡 CANCEL YOUR INDICATOR &nbsp;|&nbsp; 🔄 FIGURE OF 8 DAILY &nbsp;|&nbsp;
+      💥 CLUTCH IN BEFORE BRAKING &nbsp;|&nbsp; 🪖 HELMET AT ALL TIMES &nbsp;|&nbsp; 👀 HEAD CHECKS = PASSING &nbsp;|&nbsp; 🛑 SMOOTH ON THE BRAKES &nbsp;|&nbsp; ⚙️ FRICTION POINT = BEST FRIEND &nbsp;|&nbsp; 💡 CANCEL YOUR INDICATOR &nbsp;|&nbsp; 🔄 FIGURE OF 8 DAILY &nbsp;|&nbsp;
+    </div>
+  </div>
+
+  <!-- BIG BIKE SHOWCASE -->
+  <div class="bike-showcase">
+    <div class="bike-showcase-title">🏍️ THE BIKES YOU'LL WISH YOU OWNED 🏍️</div>
+    <div class="bike-grid-big">
+
+      <!-- Honda CBF125 -->
+      <div class="bike-card" style="--accent:#ff5555;--bg:#1a0000">
+        <svg viewBox="0 0 200 95" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="95" fill="#1a0000"/>
+          <circle cx="42" cy="68" r="20" fill="none" stroke="#cc0000" stroke-width="5"/>
+          <circle cx="42" cy="68" r="7" fill="#cc0000"/>
+          <circle cx="158" cy="68" r="20" fill="none" stroke="#cc0000" stroke-width="5"/>
+          <circle cx="158" cy="68" r="7" fill="#cc0000"/>
+          <line x1="42" y1="68" x2="78" y2="34" stroke="#ff5555" stroke-width="3.5"/>
+          <line x1="78" y1="34" x2="128" y2="32" stroke="#ff5555" stroke-width="3.5"/>
+          <line x1="128" y1="32" x2="158" y2="68" stroke="#ff5555" stroke-width="3.5"/>
+          <line x1="78" y1="34" x2="98" y2="52" stroke="#ff5555" stroke-width="2.5"/>
+          <line x1="98" y1="52" x2="158" y2="68" stroke="#ff5555" stroke-width="2.5"/>
+          <ellipse cx="103" cy="36" rx="27" ry="11" fill="#cc0000"/>
+          <rect x="112" y="27" width="36" height="7" rx="3" fill="#2a0000"/>
+          <ellipse cx="60" cy="40" rx="13" ry="9" fill="#cc0000"/>
+          <ellipse cx="56" cy="40" rx="6" ry="5" fill="#ffff99" opacity="0.9"/>
+          <line x1="72" y1="29" x2="90" y2="27" stroke="#aaa" stroke-width="3"/>
+          <line x1="56" y1="62" x2="146" y2="62" stroke="#888" stroke-width="3.5" stroke-linecap="round"/>
+          <text x="100" y="88" text-anchor="middle" fill="#ff5555" font-size="8" font-family="Impact,sans-serif">HONDA CBF125</text>
+        </svg>
+      </div>
+
+      <!-- Yamaha YZF-R125 -->
+      <div class="bike-card" style="--accent:#55aaff;--bg:#000820">
+        <svg viewBox="0 0 200 95" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="95" fill="#000820"/>
+          <circle cx="40" cy="68" r="20" fill="none" stroke="#0033bb" stroke-width="5"/>
+          <circle cx="40" cy="68" r="7" fill="#0033bb"/>
+          <circle cx="160" cy="68" r="20" fill="none" stroke="#0033bb" stroke-width="5"/>
+          <circle cx="160" cy="68" r="7" fill="#0033bb"/>
+          <polygon points="40,68 54,30 100,22 145,25 160,68 145,64 100,56 58,62" fill="#0033bb" opacity="0.9"/>
+          <polygon points="54,30 82,22 100,22 98,34 57,36" fill="#55aaff" opacity="0.75"/>
+          <polygon points="60,22 88,18 93,29 63,32" fill="#aaddff" opacity="0.55"/>
+          <ellipse cx="52" cy="36" rx="9" ry="6" fill="#ffff99" opacity="0.9"/>
+          <polygon points="122,25 155,25 158,36 120,36" fill="#000"/>
+          <line x1="56" y1="63" x2="148" y2="63" stroke="#667" stroke-width="3"/>
+          <text x="100" y="88" text-anchor="middle" fill="#55aaff" font-size="8" font-family="Impact,sans-serif">YAMAHA YZF-R125</text>
+        </svg>
+      </div>
+
+      <!-- KTM 125 Duke -->
+      <div class="bike-card" style="--accent:#ffaa00;--bg:#120800">
+        <svg viewBox="0 0 200 95" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="95" fill="#120800"/>
+          <circle cx="42" cy="70" r="20" fill="none" stroke="#dd5500" stroke-width="5"/>
+          <circle cx="42" cy="70" r="7" fill="#dd5500"/>
+          <circle cx="158" cy="70" r="20" fill="none" stroke="#dd5500" stroke-width="5"/>
+          <circle cx="158" cy="70" r="7" fill="#dd5500"/>
+          <line x1="42" y1="70" x2="76" y2="36" stroke="#ffaa00" stroke-width="3"/>
+          <line x1="76" y1="36" x2="126" y2="32" stroke="#ffaa00" stroke-width="3"/>
+          <line x1="126" y1="32" x2="158" y2="70" stroke="#ffaa00" stroke-width="3"/>
+          <line x1="76" y1="36" x2="96" y2="55" stroke="#ffaa00" stroke-width="2"/>
+          <line x1="96" y1="55" x2="126" y2="32" stroke="#ffaa00" stroke-width="2"/>
+          <line x1="96" y1="55" x2="158" y2="70" stroke="#ffaa00" stroke-width="2"/>
+          <polygon points="76,36 126,32 130,47 72,49" fill="#dd5500"/>
+          <rect x="115" y="32" width="36" height="7" rx="2" fill="#1a0800"/>
+          <polygon points="50,26 78,26 78,44 50,44" fill="#dd5500"/>
+          <polygon points="53,29 75,29 75,41 53,41" fill="#ffff99" opacity="0.9"/>
+          <line x1="60" y1="58" x2="148" y2="54" stroke="#888" stroke-width="4.5" stroke-linecap="round"/>
+          <text x="100" y="88" text-anchor="middle" fill="#ffaa00" font-size="8" font-family="Impact,sans-serif">KTM 125 DUKE</text>
+        </svg>
+      </div>
+
+      <!-- Aprilia RS125 -->
+      <div class="bike-card" style="--accent:#ff8800;--bg:#110000">
+        <svg viewBox="0 0 200 95" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="95" fill="#110000"/>
+          <circle cx="40" cy="69" r="20" fill="none" stroke="#bb0000" stroke-width="5"/>
+          <circle cx="40" cy="69" r="7" fill="#bb0000"/>
+          <circle cx="160" cy="69" r="20" fill="none" stroke="#bb0000" stroke-width="5"/>
+          <circle cx="160" cy="69" r="7" fill="#bb0000"/>
+          <polygon points="40,69 52,28 98,20 148,24 160,69 148,65 98,58 56,63" fill="#bb0000"/>
+          <polygon points="52,28 78,20 98,20 96,33 55,35" fill="#ff8800" opacity="0.65"/>
+          <ellipse cx="50" cy="32" rx="7" ry="5" fill="#ffff99" opacity="0.9"/>
+          <ellipse cx="62" cy="28" rx="6" ry="4" fill="#ffff99" opacity="0.9"/>
+          <polygon points="64,20 90,16 95,27 67,30" fill="#aaddff" opacity="0.5"/>
+          <polygon points="128,24 156,24 160,36 126,36" fill="#110000"/>
+          <line x1="56" y1="64" x2="148" y2="64" stroke="#997" stroke-width="3"/>
+          <text x="100" y="88" text-anchor="middle" fill="#ff8800" font-size="8" font-family="Impact,sans-serif">APRILIA RS125</text>
+        </svg>
+      </div>
+
+      <!-- Honda CB125R -->
+      <div class="bike-card" style="--accent:#cccccc;--bg:#0d0d0d">
+        <svg viewBox="0 0 200 95" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="95" fill="#0d0d0d"/>
+          <circle cx="42" cy="68" r="20" fill="none" stroke="#777" stroke-width="5"/>
+          <circle cx="42" cy="68" r="7" fill="#777"/>
+          <circle cx="158" cy="68" r="20" fill="none" stroke="#777" stroke-width="5"/>
+          <circle cx="158" cy="68" r="7" fill="#777"/>
+          <line x1="42" y1="68" x2="78" y2="34" stroke="#ccc" stroke-width="3.5"/>
+          <line x1="78" y1="34" x2="128" y2="32" stroke="#ccc" stroke-width="3.5"/>
+          <line x1="128" y1="32" x2="158" y2="68" stroke="#ccc" stroke-width="3.5"/>
+          <line x1="90" y1="48" x2="128" y2="32" stroke="#ccc" stroke-width="2.5" opacity="0.5"/>
+          <line x1="78" y1="34" x2="90" y2="48" stroke="#ccc" stroke-width="2.5" opacity="0.5"/>
+          <ellipse cx="102" cy="36" rx="26" ry="10" fill="#222"/>
+          <ellipse cx="102" cy="34" rx="22" ry="8" fill="#333"/>
+          <circle cx="60" cy="39" r="12" fill="#1a1a1a"/>
+          <circle cx="60" cy="39" r="8" fill="#333"/>
+          <circle cx="60" cy="39" r="5" fill="#fff" opacity="0.9"/>
+          <rect x="112" y="27" width="36" height="7" rx="3" fill="#111"/>
+          <line x1="56" y1="62" x2="147" y2="62" stroke="#555" stroke-width="4" stroke-linecap="round"/>
+          <text x="100" y="88" text-anchor="middle" fill="#ccc" font-size="8" font-family="Impact,sans-serif">HONDA CB125R</text>
+        </svg>
+      </div>
+
+      <!-- Yamaha MT-125 -->
+      <div class="bike-card" style="--accent:#ffdd00;--bg:#0a0a00">
+        <svg viewBox="0 0 200 95" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="95" fill="#0a0a00"/>
+          <circle cx="42" cy="69" r="20" fill="none" stroke="#555" stroke-width="5"/>
+          <circle cx="42" cy="69" r="7" fill="#555"/>
+          <circle cx="158" cy="69" r="20" fill="none" stroke="#555" stroke-width="5"/>
+          <circle cx="158" cy="69" r="7" fill="#555"/>
+          <line x1="42" y1="69" x2="74" y2="34" stroke="#ffdd00" stroke-width="4"/>
+          <line x1="74" y1="34" x2="128" y2="31" stroke="#ffdd00" stroke-width="4"/>
+          <line x1="128" y1="31" x2="158" y2="69" stroke="#ffdd00" stroke-width="4"/>
+          <polygon points="74,34 128,31 132,47 70,49" fill="#111"/>
+          <polygon points="74,34 102,31 102,39 74,41" fill="#ffdd00" opacity="0.75"/>
+          <polygon points="48,24 80,24 80,43 52,45" fill="#111"/>
+          <polygon points="52,27 77,27 75,41 54,42" fill="#ffdd00" opacity="0.88"/>
+          <rect x="116" y="28" width="37" height="7" rx="2" fill="#0a0a00"/>
+          <line x1="58" y1="63" x2="148" y2="63" stroke="#444" stroke-width="4" stroke-linecap="round"/>
+          <text x="100" y="88" text-anchor="middle" fill="#ffdd00" font-size="8" font-family="Impact,sans-serif">YAMAHA MT-125</text>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TWO COL -->
+  <div class="two-col">
+
+    <!-- MINI GALLERY -->
+    <div class="gallery-box">
+      <div class="gallery-title">📸 BIKE GALLERY v2.0</div>
+      <div class="bike-grid-small">
+
+        <!-- Kawasaki Z125 -->
+        <div class="bike-card small" style="--accent:#00dd00;--bg:#001100">
+          <svg viewBox="0 0 200 95" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="95" fill="#001100"/>
+            <circle cx="42" cy="69" r="20" fill="none" stroke="#005500" stroke-width="5"/>
+            <circle cx="42" cy="69" r="7" fill="#005500"/>
+            <circle cx="158" cy="69" r="20" fill="none" stroke="#005500" stroke-width="5"/>
+            <circle cx="158" cy="69" r="7" fill="#005500"/>
+            <line x1="42" y1="69" x2="76" y2="36" stroke="#00dd00" stroke-width="3.5"/>
+            <line x1="76" y1="36" x2="128" y2="33" stroke="#00dd00" stroke-width="3.5"/>
+            <line x1="128" y1="33" x2="158" y2="69" stroke="#00dd00" stroke-width="3.5"/>
+            <line x1="88" y1="50" x2="128" y2="33" stroke="#00dd00" stroke-width="2.5"/>
+            <line x1="76" y1="36" x2="88" y2="50" stroke="#00dd00" stroke-width="2.5"/>
+            <ellipse cx="100" cy="37" rx="26" ry="10" fill="#005500"/>
+            <rect x="112" y="28" width="36" height="7" rx="3" fill="#001a00"/>
+            <circle cx="60" cy="39" r="11" fill="#005500"/>
+            <circle cx="60" cy="39" r="6" fill="#aaffaa" opacity="0.85"/>
+            <line x1="55" y1="63" x2="147" y2="63" stroke="#336633" stroke-width="4" stroke-linecap="round"/>
+            <text x="100" y="88" text-anchor="middle" fill="#00dd00" font-size="8" font-family="Impact,sans-serif">KAWASAKI Z125</text>
+          </svg>
+        </div>
+
+        <!-- Suzuki GSX-S125 -->
+        <div class="bike-card small" style="--accent:#ff9900;--bg:#000011">
+          <svg viewBox="0 0 200 95" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="95" fill="#000011"/>
+            <circle cx="42" cy="69" r="20" fill="none" stroke="#000066" stroke-width="5"/>
+            <circle cx="42" cy="69" r="7" fill="#000066"/>
+            <circle cx="158" cy="69" r="20" fill="none" stroke="#000066" stroke-width="5"/>
+            <circle cx="158" cy="69" r="7" fill="#000066"/>
+            <line x1="42" y1="69" x2="78" y2="35" stroke="#ff9900" stroke-width="3.5"/>
+            <line x1="78" y1="35" x2="128" y2="32" stroke="#ff9900" stroke-width="3.5"/>
+            <line x1="128" y1="32" x2="158" y2="69" stroke="#ff9900" stroke-width="3.5"/>
+            <line x1="90" y1="50" x2="128" y2="32" stroke="#ff9900" stroke-width="2.5"/>
+            <line x1="78" y1="35" x2="90" y2="50" stroke="#ff9900" stroke-width="2.5"/>
+            <ellipse cx="101" cy="36" rx="26" ry="10" fill="#000066"/>
+            <rect x="113" y="28" width="36" height="7" rx="3" fill="#000022"/>
+            <rect x="50" y="28" width="24" height="16" rx="3" fill="#000066"/>
+            <rect x="53" y="31" width="18" height="10" rx="2" fill="#ffff99" opacity="0.88"/>
+            <line x1="56" y1="63" x2="147" y2="63" stroke="#334466" stroke-width="4" stroke-linecap="round"/>
+            <text x="100" y="88" text-anchor="middle" fill="#ff9900" font-size="8" font-family="Impact,sans-serif">SUZUKI GSX-S125</text>
+          </svg>
+        </div>
+
+        <!-- Lexmoto LXR125 -->
+        <div class="bike-card small" style="--accent:#cc44ff;--bg:#0d001a">
+          <svg viewBox="0 0 200 95" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="95" fill="#0d001a"/>
+            <circle cx="40" cy="69" r="20" fill="none" stroke="#660099" stroke-width="5"/>
+            <circle cx="40" cy="69" r="7" fill="#660099"/>
+            <circle cx="160" cy="69" r="20" fill="none" stroke="#660099" stroke-width="5"/>
+            <circle cx="160" cy="69" r="7" fill="#660099"/>
+            <polygon points="40,69 52,28 98,20 148,23 160,69 148,65 98,57 56,63" fill="#660099" opacity="0.88"/>
+            <polygon points="52,28 80,20 98,20 96,32 55,34" fill="#cc44ff" opacity="0.6"/>
+            <ellipse cx="52" cy="32" rx="9" ry="6" fill="#ffff99" opacity="0.9"/>
+            <polygon points="62,20 90,16 95,27 65,30" fill="#ccaaff" opacity="0.5"/>
+            <polygon points="128,23 156,23 160,35 126,35" fill="#0d001a"/>
+            <line x1="56" y1="64" x2="148" y2="64" stroke="#885599" stroke-width="3"/>
+            <text x="100" y="88" text-anchor="middle" fill="#cc44ff" font-size="8" font-family="Impact,sans-serif">LEXMOTO LXR125</text>
+          </svg>
+        </div>
+
+        <!-- Generic 125 Scrambler -->
+        <div class="bike-card small" style="--accent:#aaddaa;--bg:#0a1000">
+          <svg viewBox="0 0 200 95" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="95" fill="#0a1000"/>
+            <circle cx="40" cy="70" r="22" fill="none" stroke="#557755" stroke-width="5"/>
+            <circle cx="40" cy="70" r="8" fill="#557755"/>
+            <circle cx="160" cy="70" r="22" fill="none" stroke="#557755" stroke-width="5"/>
+            <circle cx="160" cy="70" r="8" fill="#557755"/>
+            <line x1="40" y1="70" x2="75" y2="34" stroke="#aaddaa" stroke-width="3.5"/>
+            <line x1="75" y1="34" x2="130" y2="30" stroke="#aaddaa" stroke-width="3.5"/>
+            <line x1="130" y1="30" x2="160" y2="70" stroke="#aaddaa" stroke-width="3.5"/>
+            <ellipse cx="102" cy="34" rx="28" ry="11" fill="#2a3a1a"/>
+            <rect x="60" y="26" width="18" height="14" rx="4" fill="#334422"/>
+            <rect x="63" y="29" width="12" height="8" rx="2" fill="#ffff99" opacity="0.8"/>
+            <line x1="75" y1="34" x2="88" y2="50" stroke="#aaddaa" stroke-width="2.5"/>
+            <line x1="88" y1="50" x2="130" y2="30" stroke="#aaddaa" stroke-width="2"/>
+            <line x1="88" y1="50" x2="160" y2="70" stroke="#aaddaa" stroke-width="2"/>
+            <rect x="115" y="28" width="36" height="7" rx="3" fill="#1a2a0a"/>
+            <line x1="56" y1="64" x2="148" y2="62" stroke="#556644" stroke-width="4.5" stroke-linecap="round"/>
+            <text x="100" y="88" text-anchor="middle" fill="#aaddaa" font-size="8" font-family="Impact,sans-serif">ROYAL ENFIELD 125</text>
+          </svg>
+        </div>
+
+      </div>
+      <div class="gallery-hint">HOVER 4 SICK GLOW EFFECT!!!!</div>
+    </div>
+
+    <!-- HYPE + VISITOR -->
+    <div class="hype-col">
+      <div class="hype-box">
+        <div class="hype-title">💬 HYPE GENERATOR 3000</div>
+        <div class="hype-text" id="hype-text">Loading sick banter...</div>
+        <button class="btn-2k" onclick="nextMeme()">⚡ NEXT HYPE ⚡</button>
+      </div>
+      <div class="visitor-box">
+        <div class="visitor-label">VISITORS:</div>
+        <div class="visitor-count" id="visitor-count">000069</div>
+        <div class="visitor-since">since 2026</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- EMOJI STRIP -->
+  <div class="emoji-strip">
+    <div class="emoji-strip-inner">
+      🏍️ 🛵 🏍️ 🪖 🏍️ 🛵 🏍️ 💨 🏍️ 🛵 🏍️ 🪖 🏍️ 🛵 🏍️ 💨 🏍️ 🛵 🏍️ 🪖 🏍️ 🛵 🏍️ 💨 🏍️ 🛵 🏍️ 🪖 🏍️ 🛵 🏍️ 💨
+    </div>
+  </div>
+
+  <!-- PANIC METER -->
+  <div class="panic-box">
+    <div class="panic-title">⚠️ PANIC-O-METER ⚠️</div>
+    <div class="panic-bar-outer">
+      <div class="panic-bar-fill" id="panic-fill" style="width:0%"></div>
+      <div class="panic-bar-pct" id="panic-pct">0%</div>
+    </div>
+    <div class="panic-msg" id="panic-msg">Calculating your dread levels...</div>
+  </div>
+
+  <!-- FUN FACTS -->
+  <div class="facts-box">
+    <div class="facts-title">⚡ DID U KNOW?? ⚡</div>
+    <div class="facts-grid">
+      <div class="fact-card"><div class="fact-title">🏍️ 125cc TOP SPEED</div><div class="fact-body">~70mph. Enough. Trust.</div></div>
+      <div class="fact-card"><div class="fact-title">📋 CBT LASTS</div><div class="fact-body">2 years before renewal</div></div>
+      <div class="fact-card"><div class="fact-title">🪖 HELMETS</div><div class="fact-body">Must be ECE 22.06 rated</div></div>
+      <div class="fact-card"><div class="fact-title">⛽ MPG</div><div class="fact-body">125s can do 100+ mpg!!</div></div>
+      <div class="fact-card"><div class="fact-title">📅 TEST LENGTH</div><div class="fact-body">Full day, ~7-8 hrs</div></div>
+      <div class="fact-card"><div class="fact-title">🔑 NO FULL TEST</div><div class="fact-body">Just CBT for a 125. LFG!</div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span style="font-size:1.6rem">🔥</span>
+    <span style="color:#f90;font-size:1.1rem;margin:0 10px">GOOD LUCK LEGENDS!!!</span>
+    <span style="font-size:1.6rem">🔥</span>
+    <div class="footer-text">
+      Best viewed at 800x600 &bull; Netscape Navigator 4.0+ required<br>
+      This page is <span style="color:#0f0">CBT CERTIFIED ✓</span> &bull; No motorbikes were harmed
+    </div>
+  </div>
+
+</div>
+
+<script>
+const TARGET = new Date('2026-05-18T08:00:00');
+
+const MEMES = [
+  "Your examiner has seen 500 nervous learners this year. They feel nothing. 👁️",
+  "One of you WILL stall at the worst possible moment. It is written. ✍️",
+  "The figure of 8 is just yoga on wheels and you ARE an athlete 🧘",
+  "You've watched 47 YouTube tutorials. The bike still doesn't care. 📺",
+  "At least one of you will forget to cancel the indicator. THE INDICATOR WILL MOCK YOU. 📯",
+  "Remember: look where you want to go. Not at the ground. NOT AT THE GROUND. 👀",
+  "The helmet hair will be catastrophic. The freedom will be worth it. 💇",
+  "Clutch friction point is your best friend. Treat it right. 🤝",
+  "Whoever stalls at the junction buys McDonald's. That is the sacred law. 🍟",
+  "You're going to nail it and then immediately start planning what 125 to buy 🏍️",
+  "CBT = Can't Believe They're letting me ride. And yet here we are!!! 🤯",
+  "Your riding jacket cost more than your first bike probably will. Priorities: respected. 🧥",
+  "The examiner's clipboard is not a weapon. It just FEELS like one. 📋",
+  "Pro tip: don't wave at the examiner. DO NOT WAVE AT THE EXAMINER. 🚫👋",
+];
+
+let memeIdx = Math.floor(Math.random() * MEMES.length);
+document.getElementById('hype-text').textContent = MEMES[memeIdx];
+
+function nextMeme() {
+  memeIdx = (memeIdx + 1) % MEMES.length;
+  document.getElementById('hype-text').textContent = MEMES[memeIdx];
+}
+
+// Visitor counter
+let visits = parseInt(localStorage.getItem('cbt_visits') || '0') + 1;
+localStorage.setItem('cbt_visits', visits);
+document.getElementById('visitor-count').textContent = String(visits).padStart(6, '0');
+
+function pad(n) { return String(n).padStart(2, '0'); }
+
+function tick() {
+  const diff = TARGET - new Date();
+  const done = diff <= 0;
+  const days    = done ? 0 : Math.floor(diff / 86400000);
+  const hours   = done ? 0 : Math.floor((diff % 86400000) / 3600000);
+  const minutes = done ? 0 : Math.floor((diff % 3600000) / 60000);
+  const seconds = done ? 0 : Math.floor((diff % 60000) / 1000);
+
+  document.getElementById('cd-days').textContent    = pad(days);
+  document.getElementById('cd-hours').textContent   = pad(hours);
+  document.getElementById('cd-minutes').textContent = pad(minutes);
+  document.getElementById('cd-seconds').textContent = pad(seconds);
+
+  // Panic meter
+  const pct = Math.min(100, Math.max(3, Math.round((1 - days / 120) * 100)));
+  document.getElementById('panic-fill').style.width = pct + '%';
+  document.getElementById('panic-pct').textContent  = pct + '%';
+
+  const msg =
+    days >= 60 ? "😎 Totally calm. Haven't even Googled 'CBT motorbike' yet." :
+    days >= 30 ? "🙂 Getting a bit real. Maybe watch a YouTube video or twelve." :
+    days >= 14 ? "😅 Two weeks!! Time to actually sit on a motorbike m8." :
+    days >= 7  ? "😬 ONE WEEK. Do you know where the friction point is??? DO YOU???" :
+    days >= 3  ? "😰 THREE DAYS. Sleep? Who needs sleep?? PRACTISE INSTEAD." :
+    days >= 1  ? "💀 TOMORROW!! Your palms are already sweating aren't they." :
+                 "🫡 TODAY IS THE DAY. YOU GOT THIS. PROBABLY. GO GO GO!!!";
+  document.getElementById('panic-msg').textContent = msg;
+}
+
+tick();
+setInterval(tick, 1000);
+</script>
+</body>
+</html>
