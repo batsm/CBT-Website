@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE CBT DAILY // 18 MAY 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Share+Tech+Mono&family=Russo+One&family=Black+Ops+One&display=swap" rel="stylesheet">
+<style>
+
+/* =============================================
+   THE CBT DAILY — TABLOID RAVE FLYER 2000s
+   ============================================= */
+
+:root {
+  --black: #050505;
+  --white: #f0f0e8;
+  --yellow: #ffe600;
+  --cyan:   #00ffee;
+  --magenta:#ff00cc;
+  --red:    #ff1a1a;
+  --green:  #00ff44;
+  --orange: #ff7700;
+  --grid:   rgba(0,255,238,0.04);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Share Tech Mono', monospace;
+  overflow-x: hidden;
+  cursor: crosshair;
+}
+
+/* SCANLINE OVERLAY */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.15) 2px,
+    rgba(0,0,0,0.15) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* GRID BG */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===================== TICKER ===================== */
+.ticker-wrap {
+  position: relative;
+  z-index: 10;
+  background: var(--yellow);
+  color: var(--black);
+  font-family: 'Anton', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  padding: 5px 0;
+  overflow: hidden;
+  border-bottom: 3px solid var(--black);
+  white-space: nowrap;
+}
+.ticker-inner {
+  display: inline-block;
+  animation: ticker 22s linear infinite;
+  white-space: nowrap;
+}
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ===================== MASTHEAD ===================== */
+.masthead {
+  position: relative;
+  z-index: 10;
+  border-bottom: 6px double var(--yellow);
+  padding: 18px 20px 14px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 10px;
+  background: var(--black);
+}
+
+.masthead-left {
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: var(--cyan);
+  line-height: 1.8;
+  text-transform: uppercase;
+}
+
+.masthead-title {
+  text-align: center;
+}
+
+.paper-name {
+  font-family: 'Black Ops One', cursive;
+  font-size: clamp(2rem, 7vw, 5rem);
+  color: var(--white);
+  line-height: 1;
+  text-shadow: 3px 3px 0 var(--yellow), 6px 6px 0 rgba(255,230,0,0.3);
+  display: block;
+  letter-spacing: -1px;
+}
+
+.paper-sub {
+  font-size: 0.6rem;
+  letter-spacing: 6px;
+  color: var(--yellow);
+  text-transform: uppercase;
+  margin-top: 4px;
+  display: block;
+  border-top: 1px solid var(--yellow);
+  border-bottom: 1px solid var(--yellow);
+  padding: 3px 0;
+}
+
+.masthead-right {
+  text-align: right;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: var(--cyan);
+  line-height: 1.8;
+  text-transform: uppercase;
+}
+
+.edition-badge {
+  display: inline-block;
+  background: var(--red);
+  color: var(--white);
+  font-family: 'Anton', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  padding: 3px 8px;
+  animation: badgePulse 1.5s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%,100% { background: var(--red); }
+  50%     { background: var(--magenta); }
+}
+
+/* ===================== PAGE BODY ===================== */
+.newspaper {
+  position: relative;
+  z-index: 10;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 12px 60px;
+}
+
+/* ===================== SECTION RULES ===================== */
+.section-rule {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0 10px;
+}
+.section-rule::before,
+.section-rule::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: currentColor;
+}
+.section-rule span {
+  font-family: 'Anton', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  white-space: nowrap;
+  padding: 0 6px;
+}
+
+/* ===================== HEADLINE BLOCK ===================== */
+.headline-block {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 0;
+  border: 2px solid var(--white);
+  margin: 12px 0;
+}
+
+@media(max-width:620px) {
+  .headline-block { grid-template-columns: 1fr; }
+  .masthead { grid-template-columns: 1fr; text-align: center; }
+  .masthead-left, .masthead-right { text-align: center; }
+}
+
+.headline-main {
+  padding: 20px;
+  border-right: 2px solid var(--white);
+}
+
+@media(max-width:620px) { .headline-main { border-right: none; border-bottom: 2px solid var(--white); } }
+
+.kicker {
+  font-size: 0.65rem;
+  letter-spacing: 4px;
+  color: var(--magenta);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.big-headline {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(2.8rem, 8vw, 5.5rem);
+  line-height: 0.9;
+  color: var(--yellow);
+  text-transform: uppercase;
+  text-shadow: 4px 4px 0 var(--magenta);
+  animation: hlineShake 8s ease-in-out infinite;
+  margin-bottom: 12px;
+}
+
+@keyframes hlineShake {
+  0%,95%,100% { transform: translateX(0); }
+  96%         { transform: translateX(-2px) skewX(-1deg); }
+  97%         { transform: translateX(2px) skewX(1deg); }
+  98%         { transform: translateX(-1px); }
+  99%         { transform: translateX(0); }
+}
+
+.deck {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: rgba(240,240,232,0.75);
+  border-left: 3px solid var(--cyan);
+  padding-left: 12px;
+  margin-bottom: 14px;
+}
+
+.byline {
+  font-size: 0.6rem;
+  letter-spacing: 3px;
+  color: var(--cyan);
+  text-transform: uppercase;
+}
+
+/* COUNTDOWN SIDEBAR */
+.countdown-sidebar {
+  background: var(--black);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.countdown-sidebar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 6px,
+    rgba(255,230,0,0.03) 6px,
+    rgba(255,230,0,0.03) 12px
+  );
+}
+
+.cd-label {
+  font-family: 'Anton', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  color: var(--magenta);
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+.cd-numbers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.cd-unit {
+  background: var(--black);
+  border: 1px solid var(--yellow);
+  padding: 8px 4px;
+  text-align: center;
+  position: relative;
+}
+
+.cd-unit::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,230,0,0.08), transparent);
+  pointer-events: none;
+}
+
+.cd-n {
+  font-family: 'Russo One', sans-serif;
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  color: var(--yellow);
+  line-height: 1;
+  display: block;
+  text-shadow: 0 0 20px rgba(255,230,0,0.5);
+  font-variant-numeric: tabular-nums;
+}
+.cd-n.secs { animation: secFlash 1s step-start infinite; }
+@keyframes secFlash { 0%,100%{color:var(--yellow); text-shadow: 0 0 20px rgba(255,230,0,0.5);} 50%{color:#fff; text-shadow: 0 0 30px #fff;} }
+
+.cd-u {
+  font-size: 0.5rem;
+  letter-spacing: 3px;
+  color: var(--cyan);
+  text-transform: uppercase;
+  margin-top: 2px;
+  display: block;
+}
+
+.cd-date-pill {
+  background: var(--yellow);
+  color: var(--black);
+  font-family: 'Anton', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  padding: 4px 10px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===================== THREE COLUMN ===================== */
+.three-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  border: 2px solid var(--white);
+  border-top: none;
+}
+@media(max-width:680px) { .three-col { grid-template-columns: 1fr; } }
+
+.col-article {
+  padding: 14px;
+  border-right: 1px solid rgba(240,240,232,0.2);
+}
+.col-article:last-child { border-right: none; }
+
+.col-head {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  line-height: 1;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.col-body {
+  font-size: 0.72rem;
+  line-height: 1.7;
+  color: rgba(240,240,232,0.7);
+}
+
+.col-body b { color: var(--white); }
+
+/* ===================== BIKE SPREAD ===================== */
+.bike-spread {
+  border: 2px solid var(--white);
+  border-top: none;
+  padding: 14px;
+}
+
+.spread-head {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  color: var(--cyan);
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+  margin-bottom: 14px;
+  text-shadow: 0 0 20px var(--cyan);
+  animation: cyanPulse 2s ease-in-out infinite;
+}
+@keyframes cyanPulse {
+  0%,100% { text-shadow: 0 0 20px var(--cyan); }
+  50%     { text-shadow: 0 0 40px var(--cyan), 0 0 60px rgba(0,255,238,0.3); }
+}
+
+.bike-mosaic {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+}
+@media(max-width:500px) { .bike-mosaic { grid-template-columns: repeat(2,1fr); } }
+
+.bike-tile {
+  position: relative;
+  aspect-ratio: 16/9;
+  border: 1px solid rgba(255,255,255,0.1);
+  overflow: hidden;
+  cursor: crosshair;
+  transition: border-color 0.2s;
+}
+.bike-tile:hover { border-color: var(--cyan); }
+.bike-tile:hover svg { filter: brightness(1.3) saturate(1.5); }
+.bike-tile svg { width:100%; height:100%; display:block; transition: filter 0.2s; }
+
+.bike-tile-label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.9));
+  padding: 10px 5px 3px;
+  font-size: 0.55rem;
+  letter-spacing: 2px;
+  color: var(--yellow);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* ===================== BOTTOM ROW ===================== */
+.bottom-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 2px solid var(--white);
+  border-top: none;
+}
+@media(max-width:580px) { .bottom-row { grid-template-columns: 1fr; } }
+
+.bottom-col { padding: 14px; border-right: 1px solid rgba(240,240,232,0.2); }
+.bottom-col:last-child { border-right: none; }
+
+/* PANIC */
+.panic-head {
+  font-family: 'Anton', sans-serif;
+  font-size: 1.3rem;
+  color: var(--red);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  animation: redBlink 0.9s step-start infinite;
+}
+@keyframes redBlink { 0%,100%{color:var(--red)} 50%{color:var(--orange)} }
+
+.panic-bar-outer {
+  height: 26px;
+  border: 1px solid var(--red);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 8px;
+  background: rgba(255,26,26,0.05);
+}
+.panic-bar-fill {
+  height: 100%;
+  background: repeating-linear-gradient(90deg, var(--red) 0, var(--red) 8px, var(--orange) 8px, var(--orange) 16px);
+  background-size: 32px 100%;
+  animation: stripes 0.3s linear infinite;
+  transition: width 1s ease;
+}
+@keyframes stripes { 0%{background-position:0 0} 100%{background-position:32px 0} }
+.panic-pct {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Anton', sans-serif;
+  font-size: 0.85rem;
+  color: #fff;
+  letter-spacing: 2px;
+}
+.panic-status {
+  font-size: 0.7rem;
+  line-height: 1.5;
+  color: var(--orange);
+  min-height: 42px;
+}
+
+/* HYPE */
+.hype-head {
+  font-family: 'Anton', sans-serif;
+  font-size: 1.3rem;
+  color: var(--green);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px var(--green);
+}
+
+.hype-quote {
+  font-size: 0.72rem;
+  line-height: 1.6;
+  color: rgba(240,240,232,0.8);
+  border-left: 3px solid var(--green);
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  background: rgba(0,255,68,0.03);
+}
+
+.btn-hype {
+  background: transparent;
+  border: 2px solid var(--green);
+  color: var(--green);
+  font-family: 'Anton', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  padding: 7px 14px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.15s;
+  display: inline-block;
+}
+.btn-hype:hover {
+  background: var(--green);
+  color: var(--black);
+  box-shadow: 0 0 20px var(--green);
+}
+.btn-hype:active { transform: scale(0.97); }
+
+/* ===================== FACTS STRIP ===================== */
+.facts-strip {
+  border: 2px solid var(--white);
+  border-top: none;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+@media(max-width:680px) { .facts-strip { grid-template-columns: repeat(3, 1fr); } }
+@media(max-width:400px) { .facts-strip { grid-template-columns: repeat(2, 1fr); } }
+
+.fact-cell {
+  padding: 10px 8px;
+  border-right: 1px solid rgba(240,240,232,0.15);
+  text-align: center;
+  transition: background 0.2s;
+}
+.fact-cell:last-child { border-right: none; }
+.fact-cell:hover { background: rgba(255,230,0,0.04); }
+
+.fact-icon { font-size: 1.4rem; display: block; margin-bottom: 4px; }
+.fact-label { font-size: 0.5rem; letter-spacing: 2px; color: var(--yellow); text-transform: uppercase; display: block; margin-bottom: 2px; }
+.fact-val { font-size: 0.65rem; color: rgba(240,240,232,0.7); line-height: 1.4; display: block; }
+
+/* ===================== FOOTER ===================== */
+.footer-bar {
+  border: 2px solid var(--white);
+  border-top: 4px solid var(--yellow);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.footer-brand {
+  font-family: 'Black Ops One', cursive;
+  font-size: 1rem;
+  color: var(--yellow);
+}
+.footer-copy {
+  font-size: 0.6rem;
+  color: rgba(240,240,232,0.35);
+  letter-spacing: 1px;
+}
+
+/* BOUNCING EMOJI STRIP */
+.emoji-strip {
+  overflow: hidden;
+  border-top: 3px solid var(--magenta);
+  border-bottom: 3px solid var(--magenta);
+  background: rgba(255,0,204,0.04);
+  padding: 2px 0;
+  white-space: nowrap;
+}
+.emoji-inner {
+  display: inline-block;
+  animation: ticker 12s linear infinite;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+/* FLOATY BADGE */
+.float-badge {
+  position: fixed;
+  bottom: 20px;
+  right: 16px;
+  z-index: 200;
+  background: var(--magenta);
+  color: #fff;
+  font-family: 'Anton', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  padding: 8px 12px;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 1.4;
+  animation: badgeBob 2s ease-in-out infinite;
+  box-shadow: 0 0 20px var(--magenta), 0 0 40px rgba(255,0,204,0.3);
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+@keyframes badgeBob {
+  0%,100% { transform: translateY(0) rotate(-2deg); }
+  50%     { transform: translateY(-6px) rotate(2deg); }
+}
+
+/* GLITCH EFFECT ON HEADER */
+.glitch {
+  position: relative;
+}
+.glitch::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 2px; top: 0;
+  color: var(--cyan);
+  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+  transform: translateX(-2px);
+  opacity: 0;
+  animation: glitchTop 6s ease-in-out infinite;
+}
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: -2px; top: 0;
+  color: var(--magenta);
+  clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+  transform: translateX(2px);
+  opacity: 0;
+  animation: glitchBot 6s ease-in-out infinite;
+}
+@keyframes glitchTop {
+  0%,90%,100% { opacity:0; }
+  92% { opacity:0.7; transform: translateX(-4px) skewX(-2deg); }
+  94% { opacity:0; }
+  96% { opacity:0.5; transform: translateX(2px); }
+  98% { opacity:0; }
+}
+@keyframes glitchBot {
+  0%,90%,100% { opacity:0; }
+  93% { opacity:0.7; transform: translateX(4px) skewX(2deg); }
+  95% { opacity:0; }
+  97% { opacity:0.5; transform: translateX(-2px); }
+  99% { opacity:0; }
+}
+</style>
+</head>
+<body>
+
+<!-- FLOAT BADGE -->
+<div class="float-badge">🏍️<br>CBT<br>2026</div>
+
+<!-- TOP TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    ⚡ BREAKING: LOCAL LEGENDS ATTEMPT CBT ON 18 MAY 2026 ⚡&nbsp;&nbsp;|&nbsp;&nbsp; 🏍️ SOURCES CONFIRM: FRICTION POINT IS REAL &nbsp;&nbsp;|&nbsp;&nbsp; ⚠️ INDICATOR NOT CANCELLED: SOURCES APPALLED &nbsp;&nbsp;|&nbsp;&nbsp; 🪖 HELMET MARKET SURGES AHEAD OF TEST DATE &nbsp;&nbsp;|&nbsp;&nbsp; 💥 FIGURE OF 8 DESCRIBED AS "FINE ONCE YOU STOP LOOKING AT THE GROUND" &nbsp;&nbsp;|&nbsp;&nbsp; 🛑 EXAMINER'S FACE: UNREADABLE &nbsp;&nbsp;|&nbsp;&nbsp;
+    ⚡ BREAKING: LOCAL LEGENDS ATTEMPT CBT ON 18 MAY 2026 ⚡&nbsp;&nbsp;|&nbsp;&nbsp; 🏍️ SOURCES CONFIRM: FRICTION POINT IS REAL &nbsp;&nbsp;|&nbsp;&nbsp; ⚠️ INDICATOR NOT CANCELLED: SOURCES APPALLED &nbsp;&nbsp;|&nbsp;&nbsp; 🪖 HELMET MARKET SURGES AHEAD OF TEST DATE &nbsp;&nbsp;|&nbsp;&nbsp; 💥 FIGURE OF 8 DESCRIBED AS "FINE ONCE YOU STOP LOOKING AT THE GROUND" &nbsp;&nbsp;|&nbsp;&nbsp; 🛑 EXAMINER'S FACE: UNREADABLE &nbsp;&nbsp;|&nbsp;&nbsp;
+  </div>
+</div>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="masthead-left">
+    EST. 2026<br>
+    ISSUE #001<br>
+    FREE COPY<br>
+    <span class="edition-badge">⚡ LIVE</span>
+  </div>
+  <div class="masthead-title">
+    <span class="paper-name glitch" data-text="THE CBT DAILY">THE CBT DAILY</span>
+    <span class="paper-sub">Britain's #1 Source For Motorbike Test Anxiety Since 2026</span>
+  </div>
+  <div class="masthead-right">
+    18 MAY 2026<br>
+    PRICE: FREE<br>
+    125cc EDITION<br>
+    RIDE OR DIE
+  </div>
+</div>
+
+<div class="newspaper">
+
+  <!-- SECTION RULE -->
+  <div class="section-rule" style="color:var(--yellow)">
+    <span>⚡ COUNTDOWN SPECIAL ⚡</span>
+  </div>
+
+  <!-- HEADLINE BLOCK: BIG STORY + COUNTDOWN -->
+  <div class="headline-block">
+    <div class="headline-main">
+      <span class="kicker">// EXCLUSIVE REPORT //</span>
+      <div class="big-headline">LOCAL LADS<br>ATTEMPT<br>CBT TEST</div>
+      <div class="deck">
+        In what sources are calling "the most anticipated motorbike event of 2026", a group of brave individuals are scheduled to sit their Compulsory Basic Training on the morning of <b style="color:var(--yellow)">18th May</b>. Helmet purchases are up. YouTube tutorials have been watched. The friction point has been located. Probably.
+      </div>
+      <div class="byline">STAFF REPORTER &bull; CBT DAILY NEWS DESK &bull; 18 MAY 2026</div>
+    </div>
+
+    <div class="countdown-sidebar">
+      <div class="cd-label">// T-MINUS //</div>
+      <div class="cd-numbers">
+        <div class="cd-unit">
+          <span class="cd-n" id="cd-days">00</span>
+          <span class="cd-u">days</span>
+        </div>
+        <div class="cd-unit">
+          <span class="cd-n" id="cd-hours">00</span>
+          <span class="cd-u">hrs</span>
+        </div>
+        <div class="cd-unit">
+          <span class="cd-n" id="cd-minutes">00</span>
+          <span class="cd-u">mins</span>
+        </div>
+        <div class="cd-unit">
+          <span class="cd-n secs" id="cd-seconds">00</span>
+          <span class="cd-u">secs</span>
+        </div>
+      </div>
+      <div class="cd-date-pill">📅 18 MAY 2026 · 08:00</div>
+    </div>
+  </div>
+
+  <!-- THREE COLUMN ARTICLES -->
+  <div class="three-col">
+    <div class="col-article">
+      <div class="section-rule" style="color:var(--cyan);margin-top:0">
+        <span>ANALYSIS</span>
+      </div>
+      <div class="col-head" style="color:var(--cyan)">Will They Stall?</div>
+      <div class="col-body">
+        Statistical modelling suggests <b>at least one candidate</b> will stall the engine at a junction. Experts have identified three high-risk moments: pulling away, the figure-of-eight, and "whenever the examiner is watching most intently."
+        <br><br>
+        Insiders report that the clutch friction point remains <b>"an ongoing discussion"</b> among the group, despite four separate YouTube tutorials on the topic.
+      </div>
+    </div>
+    <div class="col-article">
+      <div class="section-rule" style="color:var(--magenta);margin-top:0">
+        <span>OPINION</span>
+      </div>
+      <div class="col-head" style="color:var(--magenta)">The Indicator Crisis</div>
+      <div class="col-body">
+        In a frank editorial, this correspondent writes: <b>"Cancel your indicator. CANCEL IT."</b> Multiple test failures per year are attributed to indicators left blinking while the rider has long since forgotten about them.
+        <br><br>
+        "It blinks," our source said. "It blinks and it judges you. It knows what you've done."
+      </div>
+    </div>
+    <div class="col-article">
+      <div class="section-rule" style="color:var(--orange);margin-top:0">
+        <span>LIFESTYLE</span>
+      </div>
+      <div class="col-head" style="color:var(--orange)">Post-CBT Plans</div>
+      <div class="col-body">
+        Should the candidates pass, sources indicate they will <b>immediately begin browsing used 125cc listings</b> on Facebook Marketplace. Budgets described as "optimistic." Riding gear purchases are expected to exceed the cost of the first bike.
+        <br><br>
+        One candidate has reportedly <b>already named the bike</b> they don't yet own. We respect this energy.
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION RULE -->
+  <div class="section-rule" style="color:var(--cyan)">
+    <span>🏍️ BIKES OF THE YEAR SUPPLEMENT 🏍️</span>
+  </div>
+
+  <!-- BIKE SPREAD -->
+  <div class="bike-spread">
+    <div class="spread-head">// THE MACHINES //</div>
+    <div class="bike-mosaic">
+
+      <!-- CBF125 -->
+      <div class="bike-tile">
+        <svg viewBox="0 0 200 95" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="95" fill="#0d0005"/>
+          <circle cx="42" cy="68" r="20" fill="none" stroke="#cc0000" stroke-width="5"/>
+          <circle cx="42" cy="68" r="7" fill="#cc0000"/>
+          <circle cx="158" cy="68" r="20" fill="none" stroke="#cc0000" stroke-width="5"/>
+          <circle cx="158" cy="68" r="7" fill="#cc0000"/>
+          <line x1="42" y1="68" x2="78" y2="34" stroke="#ff5555" stroke-width="3.5"/>
+          <line x1="78" y1="34" x2="128" y2="32" stroke="#ff5555" stroke-width="3.5"/>
+          <line x1="128" y1="32" x2="158" y2="68" stroke="#ff5555" stroke-width="3.5"/>
+          <line x1="78" y1="34" x2="98" y2="52" stroke="#ff5555" stroke-width="2.5"/>
+          <line x1="98" y1="52" x2="158" y2="68" stroke="#ff5555" stroke-width="2.5"/>
+          <ellipse cx="103" cy="36" rx="27" ry="11" fill="#cc0000"/>
+          <rect x="112" y="27" width="36" height="7" rx="3" fill="#1a0000"/>
+          <ellipse cx="60" cy="40" rx="13" ry="9" fill="#cc0000"/>
+          <ellipse cx="56" cy="40" rx="6" ry="5" fill="#ffffaa" opacity="0.9"/>
+          <line x1="72" y1="29" x2="90" y2="27" stroke="#aaa" stroke-width="3"/>
+          <line x1="56" y1="62" x2="146" y2="62" stroke="#666" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>
+        <div class="bike-tile-label">Honda CBF125</div>
+      </div>
+
+      <!-- R125 -->
+      <div class="bike-tile">
+        <svg viewBox="0 0 200 95" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="95" fill="#00050d"/>
+          <circle cx="40" cy="68" r="20" fill="none" stroke="#0033bb" stroke-width="5"/>
+          <circle cx="40" cy="68" r="7" fill="#0033bb"/>
+          <circle cx="160" cy="68" r="20" fill="none" stroke="#0033bb" stroke-width="5"/>
+          <circle cx="160" cy="68" r="7" fill="#0033bb"/>
+          <polygon points="40,68 54,30 100,22 145,25 160,68 145,64 100,56 58,62" fill="#0033bb" opacity="0.9"/>
+          <polygon points="54,30 82,22 100,22 98,34 57,36" fill="#55aaff" opacity="0.75"/>
+          <polygon points="60,22 88,18 93,29 63,32" fill="#aaddff" opacity="0.55"/>
+          <ellipse cx="52" cy="36" rx="9" ry="6" fill="#ffffaa" opacity="0.9"/>
+          <polygon points="122,25 155,25 158,36 120,36" fill="#000"/>
+          <line x1="56" y1="63" x2="148" y2="63" stroke="#446" stroke-width="3"/>
+        </svg>
+        <div class="bike-tile-label">Yamaha YZF-R125</div>
+      </div>
+
+      <!-- KTM -->
+      <div class="bike-tile">
+        <svg viewBox="0 0 200 95" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="95" fill="#0d0500"/>
+          <circle cx="42" cy="70" r="20" fill="none" stroke="#dd5500" stroke-width="5"/>
+          <circle cx="42" cy="70" r="7" fill="#dd5500"/>
+          <circle cx="158" cy="70" r="20" fill="none" stroke="#dd5500" stroke-width="5"/>
+          <circle cx="158" cy="70" r="7" fill="#dd5500"/>
+          <line x1="42" y1="70" x2="76" y2="36" stroke="#ffaa00" stroke-width="3"/>
+          <line x1="76" y1="36" x2="126" y2="32" stroke="#ffaa00" stroke-width="3"/>
+          <line x1="126" y1="32" x2="158" y2="70" stroke="#ffaa00" stroke-width="3"/>
+          <line x1="76" y1="36" x2="96" y2="55" stroke="#ffaa00" stroke-width="2"/>
+          <line x1="96" y1="55" x2="126" y2="32" stroke="#ffaa00" stroke-width="2"/>
+          <line x1="96" y1="55" x2="158" y2="70" stroke="#ffaa00" stroke-width="2"/>
+          <polygon points="76,36 126,32 130,47 72,49" fill="#dd5500"/>
+          <rect x="115" y="32" width="36" height="7" rx="2" fill="#0d0500"/>
+          <polygon points="50,26 78,26 78,44 50,44" fill="#dd5500"/>
+          <polygon points="53,29 75,29 75,41 53,41" fill="#ffffaa" opacity="0.9"/>
+          <line x1="60" y1="58" x2="148" y2="54" stroke="#888" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+        <div class="bike-tile-label">KTM 125 Duke</div>
+      </div>
+
+      <!-- Aprilia -->
+      <div class="bike-tile">
+        <svg viewBox="0 0 200 95" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="95" fill="#0d0000"/>
+          <circle cx="40" cy="69" r="20" fill="none" stroke="#bb0000" stroke-width="5"/>
+          <circle cx="40" cy="69" r="7" fill="#bb0000"/>
+          <circle cx="160" cy="69" r="20" fill="none" stroke="#bb0000" stroke-width="5"/>
+          <circle cx="160" cy="69" r="7" fill="#bb0000"/>
+          <polygon points="40,69 52,28 98,20 148,24 160,69 148,65 98,58 56,63" fill="#bb0000"/>
+          <polygon points="52,28 78,20 98,20 96,33 55,35" fill="#ff8800" opacity="0.65"/>
+          <ellipse cx="50" cy="32" rx="7" ry="5" fill="#ffffaa" opacity="0.9"/>
+          <ellipse cx="62" cy="28" rx="6" ry="4" fill="#ffffaa" opacity="0.9"/>
+          <polygon points="64,20 90,16 95,27 67,30" fill="#aaddff" opacity="0.5"/>
+          <polygon points="128,24 156,24 160,36 126,36" fill="#0d0000"/>
+          <line x1="56" y1="64" x2="148" y2="64" stroke="#886" stroke-width="3"/>
+        </svg>
+        <div class="bike-tile-label">Aprilia RS125</div>
+      </div>
+
+      <!-- CB125R -->
+      <div class="bike-tile">
+        <svg viewBox="0 0 200 95" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="95" fill="#050505"/>
+          <circle cx="42" cy="68" r="20" fill="none" stroke="#777" stroke-width="5"/>
+          <circle cx="42" cy="68" r="7" fill="#777"/>
+          <circle cx="158" cy="68" r="20" fill="none" stroke="#777" stroke-width="5"/>
+          <circle cx="158" cy="68" r="7" fill="#777"/>
+          <line x1="42" y1="68" x2="78" y2="34" stroke="#ccc" stroke-width="3.5"/>
+          <line x1="78" y1="34" x2="128" y2="32" stroke="#ccc" stroke-width="3.5"/>
+          <line x1="128" y1="32" x2="158" y2="68" stroke="#ccc" stroke-width="3.5"/>
+          <ellipse cx="102" cy="36" rx="26" ry="10" fill="#222"/>
+          <ellipse cx="102" cy="34" rx="22" ry="8" fill="#333"/>
+          <circle cx="60" cy="39" r="12" fill="#1a1a1a"/>
+          <circle cx="60" cy="39" r="5" fill="#fff" opacity="0.9"/>
+          <rect x="112" y="27" width="36" height="7" rx="3" fill="#111"/>
+          <line x1="56" y1="62" x2="147" y2="62" stroke="#444" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+        <div class="bike-tile-label">Honda CB125R</div>
+      </div>
+
+      <!-- MT-125 -->
+      <div class="bike-tile">
+        <svg viewBox="0 0 200 95" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="95" fill="#050500"/>
+          <circle cx="42" cy="69" r="20" fill="none" stroke="#555" stroke-width="5"/>
+          <circle cx="42" cy="69" r="7" fill="#555"/>
+          <circle cx="158" cy="69" r="20" fill="none" stroke="#555" stroke-width="5"/>
+          <circle cx="158" cy="69" r="7" fill="#555"/>
+          <line x1="42" y1="69" x2="74" y2="34" stroke="#ffdd00" stroke-width="4"/>
+          <line x1="74" y1="34" x2="128" y2="31" stroke="#ffdd00" stroke-width="4"/>
+          <line x1="128" y1="31" x2="158" y2="69" stroke="#ffdd00" stroke-width="4"/>
+          <polygon points="74,34 128,31 132,47 70,49" fill="#111"/>
+          <polygon points="74,34 102,31 102,39 74,41" fill="#ffdd00" opacity="0.75"/>
+          <polygon points="48,24 80,24 80,43 52,45" fill="#111"/>
+          <polygon points="52,27 77,27 75,41 54,42" fill="#ffdd00" opacity="0.88"/>
+          <rect x="116" y="28" width="37" height="7" rx="2" fill="#050500"/>
+          <line x1="58" y1="63" x2="148" y2="63" stroke="#333" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+        <div class="bike-tile-label">Yamaha MT-125</div>
+      </div>
+
+      <!-- Kawasaki Z125 -->
+      <div class="bike-tile">
+        <svg viewBox="0 0 200 95" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="95" fill="#000d00"/>
+          <circle cx="42" cy="69" r="20" fill="none" stroke="#005500" stroke-width="5"/>
+          <circle cx="42" cy="69" r="7" fill="#005500"/>
+          <circle cx="158" cy="69" r="20" fill="none" stroke="#005500" stroke-width="5"/>
+          <circle cx="158" cy="69" r="7" fill="#005500"/>
+          <line x1="42" y1="69" x2="76" y2="36" stroke="#00dd00" stroke-width="3.5"/>
+          <line x1="76" y1="36" x2="128" y2="33" stroke="#00dd00" stroke-width="3.5"/>
+          <line x1="128" y1="33" x2="158" y2="69" stroke="#00dd00" stroke-width="3.5"/>
+          <line x1="88" y1="50" x2="128" y2="33" stroke="#00dd00" stroke-width="2.5"/>
+          <line x1="76" y1="36" x2="88" y2="50" stroke="#00dd00" stroke-width="2.5"/>
+          <ellipse cx="100" cy="37" rx="26" ry="10" fill="#005500"/>
+          <circle cx="60" cy="39" r="11" fill="#005500"/>
+          <circle cx="60" cy="39" r="6" fill="#aaffaa" opacity="0.85"/>
+          <line x1="55" y1="63" x2="147" y2="63" stroke="#224422" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+        <div class="bike-tile-label">Kawasaki Z125</div>
+      </div>
+
+      <!-- Suzuki GSX-S125 -->
+      <div class="bike-tile">
+        <svg viewBox="0 0 200 95" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="95" fill="#00000d"/>
+          <circle cx="42" cy="69" r="20" fill="none" stroke="#000066" stroke-width="5"/>
+          <circle cx="42" cy="69" r="7" fill="#000066"/>
+          <circle cx="158" cy="69" r="20" fill="none" stroke="#000066" stroke-width="5"/>
+          <circle cx="158" cy="69" r="7" fill="#000066"/>
+          <line x1="42" y1="69" x2="78" y2="35" stroke="#ff9900" stroke-width="3.5"/>
+          <line x1="78" y1="35" x2="128" y2="32" stroke="#ff9900" stroke-width="3.5"/>
+          <line x1="128" y1="32" x2="158" y2="69" stroke="#ff9900" stroke-width="3.5"/>
+          <ellipse cx="101" cy="36" rx="26" ry="10" fill="#000066"/>
+          <rect x="50" y="28" width="24" height="16" rx="3" fill="#000066"/>
+          <rect x="53" y="31" width="18" height="10" rx="2" fill="#ffffaa" opacity="0.88"/>
+          <line x1="56" y1="63" x2="147" y2="63" stroke="#223344" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+        <div class="bike-tile-label">Suzuki GSX-S125</div>
+      </div>
+
+      <!-- Lexmoto -->
+      <div class="bike-tile">
+        <svg viewBox="0 0 200 95" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="95" fill="#08000d"/>
+          <circle cx="40" cy="69" r="20" fill="none" stroke="#660099" stroke-width="5"/>
+          <circle cx="40" cy="69" r="7" fill="#660099"/>
+          <circle cx="160" cy="69" r="20" fill="none" stroke="#660099" stroke-width="5"/>
+          <circle cx="160" cy="69" r="7" fill="#660099"/>
+          <polygon points="40,69 52,28 98,20 148,23 160,69 148,65 98,57 56,63" fill="#660099" opacity="0.88"/>
+          <polygon points="52,28 80,20 98,20 96,32 55,34" fill="#cc44ff" opacity="0.6"/>
+          <ellipse cx="52" cy="32" rx="9" ry="6" fill="#ffffaa" opacity="0.9"/>
+          <polygon points="62,20 90,16 95,27 65,30" fill="#ccaaff" opacity="0.5"/>
+          <polygon points="128,23 156,23 160,35 126,35" fill="#08000d"/>
+          <line x1="56" y1="64" x2="148" y2="64" stroke="#664477" stroke-width="3"/>
+        </svg>
+        <div class="bike-tile-label">Lexmoto LXR125</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EMOJI STRIP -->
+  <div class="emoji-strip">
+    <div class="emoji-inner">🏍️ 🛵 🏍️ 🪖 🏍️ 💨 🏍️ 🛵 🏍️ 🔥 🏍️ 🛵 🏍️ 🪖 🏍️ 💨 🏍️ 🛵 🏍️ 🔥 🏍️ 🛵 🏍️ 🪖 🏍️ 💨 🏍️ 🛵 🏍️ 🔥 &nbsp;</div>
+  </div>
+
+  <!-- BOTTOM ROW: PANIC + HYPE -->
+  <div class="bottom-row">
+    <div class="bottom-col">
+      <div class="panic-head">⚠ PANIC-O-METER</div>
+      <div class="panic-bar-outer">
+        <div class="panic-bar-fill" id="panic-fill" style="width:3%"></div>
+        <div class="panic-pct" id="panic-pct">3%</div>
+      </div>
+      <div class="panic-status" id="panic-status">Calibrating anxiety levels...</div>
+    </div>
+    <div class="bottom-col">
+      <div class="hype-head">💬 QUOTE OF THE DAY</div>
+      <div class="hype-quote" id="hype-text">Loading transmission...</div>
+      <button class="btn-hype" onclick="nextMeme()">▶ NEXT QUOTE</button>
+    </div>
+  </div>
+
+  <!-- FACTS STRIP -->
+  <div class="facts-strip">
+    <div class="fact-cell">
+      <span class="fact-icon">🏍️</span>
+      <span class="fact-label">Top Speed</span>
+      <span class="fact-val">~70mph<br>trust.</span>
+    </div>
+    <div class="fact-cell">
+      <span class="fact-icon">📋</span>
+      <span class="fact-label">CBT Valid</span>
+      <span class="fact-val">2 years<br>then renew</span>
+    </div>
+    <div class="fact-cell">
+      <span class="fact-icon">🪖</span>
+      <span class="fact-label">Helmet</span>
+      <span class="fact-val">ECE 22.06<br>required</span>
+    </div>
+    <div class="fact-cell">
+      <span class="fact-icon">⛽</span>
+      <span class="fact-label">MPG</span>
+      <span class="fact-val">100+mpg<br>legendary</span>
+    </div>
+    <div class="fact-cell">
+      <span class="fact-icon">📅</span>
+      <span class="fact-label">Test Day</span>
+      <span class="fact-val">~7-8 hrs<br>full day</span>
+    </div>
+    <div class="fact-cell">
+      <span class="fact-icon">🔑</span>
+      <span class="fact-label">No Big Test</span>
+      <span class="fact-val">CBT only<br>for 125cc!</span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-bar">
+    <div class="footer-brand">THE CBT DAILY</div>
+    <div class="footer-copy">
+      © 2026 CBT Daily Press • Not liable for stalled engines • No examiners were harmed<br>
+      Best viewed on any browser built after 1998 • Helmet not included
+    </div>
+    <div style="font-size:1.4rem">🏍️ 🪖 🏍️</div>
+  </div>
+
+</div>
+
+<script>
+const TARGET = new Date('2026-05-18T08:00:00');
+
+const MEMES = [
+  "Your examiner has seen 500 nervous learners this year. They feel nothing. 👁️",
+  "One of you WILL stall at the worst possible moment. It is written in the stars. ✍️",
+  "The figure of 8 is just yoga on wheels and you ARE an athlete. 🧘",
+  "You've watched 47 YouTube tutorials. The bike still doesn't care. 📺",
+  "At least one of you will forget to cancel the indicator. The indicator will mock you. 📯",
+  "Look where you want to go. Not at the ground. NOT. AT. THE. GROUND. 👀",
+  "The helmet hair will be catastrophic. The freedom will be worth every bit of it. 💇",
+  "The clutch friction point is your best friend. Treat it with respect. 🤝",
+  "Whoever stalls at the first junction buys McDonald's. That is the sacred law. 🍟",
+  "You're going to nail it and then immediately start browsing used 125cc listings. 🏍️",
+  "CBT: Can't Believe They're actually letting us ride. And yet here we are. 🤯",
+  "Your riding jacket cost more than your first bike will. Priorities respected entirely. 🧥",
+  "The examiner's clipboard is not a weapon. It just genuinely feels like one. 📋",
+  "Pro tip: do not wave at the examiner. DO NOT WAVE AT THE EXAMINER. 🚫👋",
+  "You've got this. Probably. The vibes are immaculate. The clutch control: TBD. ⚡",
+];
+
+let memeIdx = Math.floor(Math.random() * MEMES.length);
+document.getElementById('hype-text').textContent = MEMES[memeIdx];
+
+function nextMeme() {
+  memeIdx = (memeIdx + 1) % MEMES.length;
+  document.getElementById('hype-text').textContent = MEMES[memeIdx];
+}
+
+function pad(n) { return String(n).padStart(2, '0'); }
+
+function tick() {
+  const diff = TARGET - new Date();
+  const done = diff <= 0;
+  const days    = done ? 0 : Math.floor(diff / 86400000);
+  const hours   = done ? 0 : Math.floor((diff % 86400000) / 3600000);
+  const minutes = done ? 0 : Math.floor((diff % 3600000) / 60000);
+  const seconds = done ? 0 : Math.floor((diff % 60000) / 1000);
+
+  document.getElementById('cd-days').textContent    = pad(days);
+  document.getElementById('cd-hours').textContent   = pad(hours);
+  document.getElementById('cd-minutes').textContent = pad(minutes);
+  document.getElementById('cd-seconds').textContent = pad(seconds);
+
+  const pct = Math.min(100, Math.max(3, Math.round((1 - days / 120) * 100)));
+  document.getElementById('panic-fill').style.width = pct + '%';
+  document.getElementById('panic-pct').textContent  = pct + '%';
+
+  document.getElementById('panic-status').textContent =
+    days >= 60 ? "😎 Totally calm. You haven't even Googled 'CBT motorbike' yet." :
+    days >= 30 ? "🙂 Getting real. Maybe watch a YouTube tutorial or twelve." :
+    days >= 14 ? "😅 Two weeks! Time to actually sit on a motorbike m8." :
+    days >= 7  ? "😬 ONE WEEK. Do you know where the friction point is???" :
+    days >= 3  ? "😰 THREE DAYS. Sleep is for people who haven't got a CBT." :
+    days >= 1  ? "💀 TOMORROW. Your palms are already sweating, aren't they." :
+                 "🫡 TODAY IS THE DAY. YOU GOT THIS. PROBABLY. GO GO GO!!!";
+}
+
+tick();
+setInterval(tick, 1000);
+</script>
+</body>
+</html>
